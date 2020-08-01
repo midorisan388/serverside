@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="./css/testStyle1.css" type="text/css" />
+    <script type="text/javascript" src="./js/prag/jquery-3.3.1.js"></script>
+    <link rel="shortcut icon" href="img/menu/loginicon.jpg">
+
+    <title>anim.js test</title>
+</head>
+<body>
+    <div class="side-view">
+        <div class="game-score-view">
+            スコア
+        </div>
+        <div class="loading-img"></div>
+    </div>
+    <div class ="main">
+        <div class="back-img">
+            <div class="party-face-img">
+                <div class="face-img" id="face-img1"><img class="standtest" src="img/characters/teststand.jpg">顔グラ１</div>
+                <div class="face-img" id="face-img2"><img class="standtest" src="img/characters/teststand2.jpg">顔グラ２</div>
+                <div class="face-img" id="face-img3"><img class="standtest" src="img/characters/stand3.jpg">顔グラ３</div>
+                <div class="face-img" id="face-img4"><img class="standtest" src="img/characters/stand4.jpg">顔グラ４（空欄）</div>
+            </div>
+        </div>
+        <div class="game-play-view">
+            <div class="lern-group">
+                <div class="play-lern" id="lern1"><div class="lern-line"></div><div class="touch-point"></div></div>
+                <div class="play-lern" id="lern2"><div class="lern-line"></div><div class="touch-point"></div></div>
+                <div class="play-lern" id="lern3"><div class="lern-line"></div><div class="touch-point"></div></div>
+                <div class="play-lern" id="lern4"><div class="lern-line"></div><div class="touch-point"></div></div>
+                <div class="center-lern"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="party-icon">
+        <div class="member-icon" id="icon1"><img src="img/characters/face1.jpg"></div>
+        <div class="member-icon" id="icon2"><img src="img/characters/face2.jpg"> </div>
+        <div class="member-icon" id="icon3"><img src="img/characters/face3.jpg"> </div>
+        <div class="member-icon" id="icon4"><img src="img/characters/face4.jpg"> </div>
+    </div>
+    <!--
+    <div class="notes-start-point">
+        <img src="img/battlescene/icon_1.png">
+        ノーツ発生地点
+    </div>
+-->
+<div class="top-view">
+    <div class="enemy-view">
+        <div class="enemy-status">
+            <div class="enemy-face"></div>
+            <div class="enemy-health"></div>
+        </div>
+    </div>
+    <div class="lerder-view">
+            <div class="lerder-status">
+                <div class="lerder-face"></div>
+                <div class="lerder-over"></div>
+            </div>
+        </div>
+</div>
+<div class="tap-img" onclick="Start()">
+    <h1><strong>クエスト名【難易度】</strong></h1>
+    <h2><strong>曲名</strong></h2>
+    <p>タッチしてスタート</p>
+</div>
+
+<script>
+    function Start(){
+        $(".tap-img").addClass("taped-img");
+        $(".taped-img").removeClass("tap-img")
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script type="text/javascript" src="js/prag/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="js/prag/turn.js"></script>
+    <script type="text/javascript" src="js/prag/anim.min.js"></script>
+    <link rel="stylesheet" href="css/fliptest.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="back-img">
+            <div class="before-img"><img class="before-img-back" src="img/characters/face1.jpg"></div>
+            <div class="after-img"><img  class="after-img-back" src="img/characters/face1.jpg"></div>
+        </div>
+        <div class="magazine-view">
+            <div id="magazine">
+                <div class=quest-info-title>Story</div>
+                <div class=quest-info-null></div>
+            </div>
+        </div>
+        <div class="quest-ui">
+            <div class="quest-start-btn">
+                <div class="quest-start-img"><a href="/game/battle" onclick="LocateBattleScene()">クエスト開始</a>></div>
+            </div>
+            <div class="party-btn">
+                <div class="party-btn-img"><a href="">パーティ編成</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="wapper">
+        
+        <div class="page-anounce-view">
+            <div class="page-anounce-point">
+
+            </div>
+        </div>
+        <div class="st0">
+            <!--<div class="chapter-text"></div>-->
+            <div class="page-point"></div>
+        </div>
+        <div class="prev-btn">前のページへ</div>
+        <div class="next-btn">次のページへ</div>
+        <div class="chapter-list-view">
+            <ul>
+            </ul>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    let selectStoryIndex=0; //章
+    let moveX=100;
+    var btnCnt=0, pageCnt=0;
+    let pages = 0;
+    let questChapterPages=[];//章ごとのクエストページ数
+    let chapterCnt=0;
+    let questParam=[];  //食えsと情報
+    let questTitlePage=[];//章タイトルページindex
+
+    function Init(questData){
+        //$('.back-img').css('background','url(img/characters/'+questData["questData"][0]["backImg"]+')');
+        ChangeBackImg(questData["questData"][0]["backImg"],questData["questData"][0]["backImg"]);
+
+        questParam = questData["questData"];
+        questTitlePage = questData["questTitlePageNo"];
+        questChapterPages = questData["questChapterPages"]; 
+        chapterCnt = questChapterPages.length; //章の数
+        pages=questData["questPages"].length;
+
+        const lastPage= $('<div />',{"class":"quest-info-end"}).html("更新待ち");
+        
+        for(var i=0; i < questData["questPages"].length; i++){
+            let setQuestElm = $('<div />',{"class":"quest-page-contents"}).html(questData["questPages"][i]);
+            $('#magazine').append(setQuestElm);
+        }
+        $('#magazine').append(lastPage);
+
+        $('#magazine').turn("pages",pages+2);
+
+        //選択中のページの案内ビュー
+        InitPagePoints(questData);
+        //章リスト生成
+        InitChapterList(questData["questTitlePageNo"]);
+
+        moveX=window.parent.screen.width/(pages+1);
+
+        $('#magazine').turn({
+            width: 500,
+            height: 400,
+            elevation: 50,
+            gradients: true,
+            disable:true
+        });
+
+        PageViewMove();
+    }
+
+    function InitChapterList(data){
+        for(var i =0; i < data.length; i++){
+            let liEllm=$('<li />',{"value": i, "onclick": "SkipChapter("+i+")"}).html("第"+(i+1)+"章");
+            $('.chapter-list-view').append(liEllm);
+        }
+    }
+    
+    function InitPagePoints(data){
+        let chapter_id=0;
+        const setAnnounceP= $('<div />',{"id":"anounce-point-title", "style":"left:"+((1/pages)*100)+"%"});
+        $('.page-anounce-point').append(setAnnounceP);
+
+        for(var i=0,page_index=0; i< $('#magazine').turn("pages")/2; i++){
+            let pageClassName="anounce-point";
+            if(page_index === 0){
+                pageClassName="anounce-point-title";
+            } 
+
+            const setAnnounceP= $('<div />',{"id":pageClassName, "style":"left:"+((i+2)/pages)*100+"%"});
+            $('.page-anounce-point').append(setAnnounceP);
+
+            page_index++;
+            if(page_index > data["questChapterPages"][chapter_id]){
+                page_index=0;
+                chapter_id++;
+            }
+        }
+    }
+
+    //章のタイトルページまで飛ぶ
+    function SkipChapter(id){
+        console.log(questTitlePage[id]*2);
+        
+        selectStoryIndex=id;
+        questCnt=QuestIdCounter(id,0);
+        btnCnt=0;
+        pageCnt=questTitlePage[id];
+
+        SetQuestIdSession();
+        $('#magazine').turn('page', questTitlePage[id]*2);
+        PageViewMove();
+    }
+
+    function GetQuestDate(){
+        $.ajax({
+            url:"./php/storyMenutest.php",
+            type:"post",
+            success:function(data){
+                Init(data);
+            },
+            error:(function(XMLHttpRequest, textStatus, errorThrown) {
+            　　console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+            　　console.log("textStatus     : " + textStatus);
+            　　console.log("errorThrown    : " + errorThrown.message);              
+            })
+        });
+    }
+
+    //バトルページに遷移
+    function LocateBattleScene(){
+        console.log("battle start");
+        $.ajax({
+        url:"php/storyMenutest.php",
+        type:"post",
+        data:{
+            quest_start:true,
+        },
+        success:function(data){
+            //クエスト開始を送る
+        },
+        error:(function(XMLHttpRequest, textStatus, errorThrown) {
+        　　console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        　　console.log("textStatus     : " + textStatus);
+        　　console.log("errorThrown    : " + errorThrown.message);              
+            })
+        });
+    }
+
+    let questCnt=-2; //めくったクエストページ数
+
+    $(".prev-btn").click(()=>{
+
+        if(btnCnt > 1){
+            btnCnt--;
+            pageCnt--;
+            questCnt--;
+            SetQuestIdSession();
+
+            if(questCnt < questParam.length && questCnt >= 0 )
+                ChangeBackImg(questParam[questCnt+1]["backImg"],questParam[questCnt]["backImg"]);
+
+            $('#magazine').turn('previous');
+        }else if(selectStoryIndex > 0){
+            //前の章
+            selectStoryIndex--;
+            pageCnt--;
+            btnCnt = questChapterPages[selectStoryIndex]+1;
+            $('#magazine').turn('previous');
+        }else{
+            //最後のページへ
+            selectStoryIndex = chapterCnt-1;
+            pageCnt = $('#magazine').turn('pages')/2;
+            btnCnt = pages;
+            questCnt=questParam.length-1;
+            SetQuestIdSession();
+            
+            ChangeBackImg(questParam[0]["backImg"],questParam[questCnt]["backImg"]);
+
+            $('#magazine').turn('page',$('#magazine').turn('pages'));
+        }
+
+        PageViewMove();
+    });
+
+    $(".next-btn").click(()=>{
+        if( selectStoryIndex >= chapterCnt-1  && pageCnt*2 >= $('#magazine').turn('pages')){
+            //最初のページへ
+            btnCnt=0;
+            pageCnt=0;
+            questCnt=-2;
+            selectStoryIndex=0;
+
+            ChangeBackImg(questParam[questParam.length-1]["backImg"],questParam[0]["backImg"]);
+            $('#magazine').turn('page',1);
+        }else if( btnCnt >= questChapterPages[selectStoryIndex]+1){
+            //次の章へ
+            btnCnt=1;
+            pageCnt++;
+            
+            selectStoryIndex++;
+            $('#magazine').turn('next');
+        }else{
+            
+            btnCnt++;
+            pageCnt++;
+            questCnt++;
+            
+            SetQuestIdSession();
+            if(questCnt < questParam.length && questCnt > 0)
+                ChangeBackImg(questParam[questCnt-1]["backImg"],questParam[questCnt]["backImg"]);
+
+            $('#magazine').turn('next');
+        }
+
+        PageViewMove();
+    });
+
+    function PageViewMove(){
+        if(pageCnt <= 0 || isTitlePage())
+            $('.quest-start-btn').attr('hidden',true);
+        else
+            $('.quest-start-btn').attr('hidden',false);
+
+        anime({
+            targets: '.st0',
+            duration: 2000,
+            left: ((pageCnt+1)/pages)*100+"%" //moveX*pageCnt*2
+        });
+    }
+
+    function isTitlePage(){
+        for(var i=0; i < chapterCnt; i++){
+            if(pageCnt === questTitlePage[i])
+                return true;
+        }
+        return false;
+    }
+
+    function QuestIdCounter(chapter_index,offset){
+        let sum=offset;
+        for(var i=0; i< chapter_index; i++){
+            sum += questChapterPages[i]-1;
+        }
+        return sum;
+    }
+
+    function SetQuestIdSession(){
+        if(questCnt < 0)return;
+
+        $.ajax({
+        url:"./php/storyMenutest.php",
+        type:"post",
+        data:{
+            panelId:questCnt
+        },
+        success:function(data){
+        },
+        error:(function(XMLHttpRequest, textStatus, errorThrown) {
+        　　console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        　　console.log("textStatus     : " + textStatus);
+        　　console.log("errorThrown    : " + errorThrown.message);              
+            })
+        });
+    }
+
+    function onLoadPage(){
+        $('#magazine').turn("next");
+        GetQuestDate();
+    }
+
+    const duration=1000;
+
+    function ChangeBackImg(beforeUrl, afterUrl){
+        $('.prev-btn').attr('hidden',true);
+        $('.next-btn').attr('hidden',true);
+        
+        //透過度を交互に入れ替える
+        const before='img/characters/'+beforeUrl;
+        const after='img/characters/'+afterUrl;
+
+        if( parseInt($(".before-img").css('opacity')) < 1){
+
+            ChangeOpacity('.after-img','.before-img',before,after);
+
+        }else if(parseInt($(".after-img").css('opacity')) < 1){
+
+            ChangeOpacity('.before-img','.after-img',before,after);
+        }
+        delayCall(duration/1000,()=>{
+            $('.next-btn').attr('hidden',false);
+            $('.prev-btn').attr('hidden',false);
+        });
+    }
+
+    function ChangeOpacity(beforeSel,afterSel,beforeImg, afterImg){
+        $(beforeSel+"-back").attr('src', beforeImg);
+        $(afterSel+"-back").attr('src', afterImg);
+
+        $(afterSel).animate({opacity: 1},{duration: duration});
+        $(beforeSel).animate({opacity: 0},{duration: duration});
+    }
+
+    function delayCall(sec,callBack){
+        setTimeout(callBack,sec*1000);
+    }
+
+    window.onload=onLoadPage();
+</script>
+</html>

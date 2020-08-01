@@ -1,0 +1,52 @@
+<img draggable=false class="bg" src="./img/menu/menuback.jpg">
+<div class="view-port gridview">
+    <div class="select_menu griditem">
+        <div class="select_bg gridview griditem">
+            <div class="left_view">
+                <div class="griditem" id="character_list">
+                    <select id="select_characters_dropdown" onchange="selectCharacterpanel()">
+
+                    </select>
+                </div>
+            </div>
+            <div class="right_view griditem">
+                <div class="character_data_view gridview griditem">
+                    <div class="character_img griditem">
+                        <img draggable=false id="character_standimg" alt="キャラ立ち絵" src="img/characters/145901/1459010201.png">
+                    </div>
+                    <div class="character_stetas griditem gridview">
+                        <div class="griditem" id="select_name">キャラ名</div><div id="select_job">ジョブ系統</div>
+                        <div class="griditem" id="select_type" >戦闘タイプ</div><div class="griditem" id="select_race">種族</div>
+                        <div class="gridview" id="character_param">
+                            <div class="griditem character_param_val" id="select_hp">HP:</div>
+                            <div class="griditem character_param_val" id="select_pow">攻撃力:</div>
+                            <div class="griditem character_param_val" id="select_deff">防御力:</div>
+                            <div class="griditem character_param_val" id="select_magic">魔力:</div>
+                            <div class="griditem character_param_val" id="select_mental">精神力:</div>
+                        </div>
+                        <div id="character_skillparam">
+                            <div id="select_skill_name">スキル名</div>
+                            <div id="select_skill_ct">CT:</div>
+                            <div id="select_skill_func">スキル効果:</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="party_view griditem">
+        <div class="gridview party_bg">
+            <div class="party_list gridview griditem">
+                <div class="griditem" id="member_1">
+                </div>
+                <div class="griditem " id="member_2">
+                </div>
+                <div class="griditem" id="member_3">
+                </div>
+                <div class="griditem" id="member_4">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/partyMenu.js"></script>

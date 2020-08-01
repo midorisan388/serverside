@@ -1,0 +1,64 @@
+<div id="stetasview">
+    <div class="main">
+        <img draggable="false" id="back" class="back" src="img/menu/hometest2.jpg" alt="背景" />
+     <div id="Home" class="Home">
+       <img draggable="false" id="homechara" class="homechara" src="" alt="キャラ" />
+       <div class="HomeMenu-Linkscontent">
+           <div class="Menu-content">
+               <form class="HomeMenu-btn-content" action="/game/page" method="GET">
+                    <div class="MenuLink-div" id="PartyBtn"　value="編成">
+                        <input type="submit" name="page-link" value="party"></input>
+                    </div>
+               </div>
+               <div class="HomeMenu-btn-content">
+                    <div class="MenuLink-div" id="QuestBtn" value="クエスト">
+                        <input type="submit" name="page-link" value="quest">
+                    </div>
+               </div>
+               <div class="HomeMenu-btn-content">
+                    <div class="MenuLink-div" id="UpgreadBtn" value="強化">
+                        <input type="submit" name="page-link" value="upgrade">
+                    </div>
+               </div>
+               <div class="HomeMenu-btn-content">
+                    <div class="MenuLink-div" id="UserBtn"　value="ユーザー情報">
+                        <input type="submit" name="page-link" value="user" >
+                    </div>
+                </form>
+           </div>
+        </div>
+       <div id="userdata" class="userdata">
+       <div id="userstatusmenu"> 
+         <div class="username" id="username">usrnm</div>
+         <div class="userlank" id="userrank">usrrk</div>
+         <div class="userexp" id="userexp">usrexp</div>
+         <div class="userAP" id="userAP">usrap</div>
+      </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<script type="text/javascript">
+
+  $(window).on("load",function(){
+    $.ajax({
+          url:"php/Mypage.php",
+          cache:false,
+          async:false,
+          dataType:"json",
+          success:function(data){            
+              $("#username").html(data["userdata"]["username"]);//プレイヤー名表示
+              $("#userrank").html("Rank: "+data["userdata"]["userrank"]);//ランク表示
+              $("#userexp").html("Exp: "+ data["userdata"]["userexp"] +"/"+ data["userdata"]["usernextexp"]);//プレイヤー経験値表示
+              $("#userAP").html("AP: "+ data["userdata"]["userAP"]);
+              $("#homechara").attr("src","./img/characters/"+data["charaurl"]+"/"+data["charaurl"]+"0201.png");//プレイヤーキャラクター画像url取得
+          },
+          error:(function(XMLHttpRequest, textStatus, errorThrown) {
+            　　console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+            　　console.log("textStatus     : " + textStatus);
+            　　console.log("errorThrown    : " + errorThrown.message);              
+          })
+      });
+  });
+</script>

@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" 
+  content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+ <link rel="stylesheet" href="./css/Home.css" type="text/css" />
+ <link rel="stylesheet" href="./css/MenuVar.css" type="text/css" />
+ <link rel="stylesheet" href="./css/gameFormatStyle.css" type="text/css" />
+
+ <script src="./js/HomeSprite.js"></script>
+ <script type="text/javascript" src="./js/prag/jquery-3.3.1.js"></script>
+ <link rel="shortcut icon" href="img/menu/loginicon.jpg">
+ <title>HOME</title>
+ <script> 
+    $(window).on('load',function(){
+      $('audio').prop('volume',0);
+      $(".loading").addClass('loading_comp');
+      $(".loading").removeClass('loading');
+      $(".loading").fadeOut();
+    });
+  </script>
+</head>
+
+<!--ホーム画面-->
+<body>
+  <audio id="homebgm" type="audio/ogg" src="./audio/bgm/homebgm.ogg" preload="auto" autoplay loop volume="0">
+    <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
+  </audio>
+  <div id="stetasview">
+    <div class="main">
+        <img draggable="false" id="back" class="back" src="img/menu/hometest2.jpg" alt="背景" />
+     <div id="Home" class="Home">
+       <img draggable="false" id="homechara" class="homechara" src="" alt="キャラ" />
+       <div class="HomeMenu-Linkscontent">
+           <div class="Menu-content">
+               <div class="HomeMenu-btn-content">
+                    <div class="MenuLink-div" id="PartyBtn"><a href="PartyChange.html">パーティ編成</a></div>
+               </div>
+               <div class="HomeMenu-btn-content">
+                    <div class="MenuLink-div"id="QuestBtn"><a href="./questSelectScene.html">クエスト</a></div>
+               </div>
+               <div class="HomeMenu-btn-content">
+                    <div class="MenuLink-div"id="UpgreadBtn">強化</div>
+               </div>
+               <div class="HomeMenu-btn-content">
+                    <div class="MenuLink-div"id="UserBtn"><a href="./Useraccountpage.php">ユーザ</a></div>
+               </div>
+           </div>
+        </div>
+       <div id="userdata" class="userdata">
+       <div id="userstatusmenu"> 
+         <div class="username" id="username"></div>
+         <div class="userlank" id="userrank"></div>
+         <div class="userexp" id="userexp"></div>
+         <div class="userAP" id="userAP"></div>
+      </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <div class="loading"></div>
+<script type="text/javascript" src="js/GameFormatInsert.js"></script>
+<script type="text/javascript" src="js/MenuVarInsert.js"></script>
+<script type="text/javascript">
+
+  $(window).on('load',function(){
+    $.ajax({
+          url:"php/Mypage.php",
+          cache:false,
+          async:false,
+          dataType:"json",
+          success:function(data){            
+              $("#username").html(data["userdata"]["username"]);//プレイヤー名表示
+              $("#userrank").html("Rank: "+data["userdata"]["userrank"]);//ランク表示
+              $("#userexp").html("Exp: "+ data["userdata"]["userexp"] +"/"+ data["userdata"]["usernextexp"]);//プレイヤー経験値表示
+              $("#userAP").html("AP: "+ data["userdata"]["userAP"]);
+              $("#homechara").attr("src",'./img/characters/'+data["charaurl"]+'/'+data["charaurl"]+'0201.png');//プレイヤーキャラクター画像url取得
+          },
+          error:(function(XMLHttpRequest, textStatus, errorThrown) {
+            　　console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+            　　console.log("textStatus     : " + textStatus);
+            　　console.log("errorThrown    : " + errorThrown.message);              
+          })
+      });
+  });
+
+</script>
+</body>
+</html>

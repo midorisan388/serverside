@@ -1,0 +1,193 @@
+div{
+    font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN','American Typewriter','ＭＳ Ｐ明朝','MS PMincho',sans-serif;
+  }
+
+/*メニューバーコンテンツ*/
+.MenuVar-content{
+    z-index: 9000;
+    background-color:rgba(0,0,0,0.7);
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    height: 0vh;
+    margin: 0; padding:0; border:0;
+    transition: all 1s ease;
+ }
+
+ #menuoparate-btnimg{
+     width: 50px;
+     height: 50px;
+ }
+.menuoperate{
+    position: absolute;
+    top:0%;
+    right: 0%;
+    width: auto;
+}
+   /*メニューバー親オブジェクト*/
+#Menu-links-content{
+    overflow-y:hidden;
+    overflow-x:hidden;
+    z-index: 1000;
+    position: absolute;
+    justify-content: space-evenly;
+    transition: all 300ms 0s ease;
+}
+
+.menu-controller-area{
+    width: 50%;
+    height: 30px;
+}
+/*メニューバー子オブジェクト*/
+.Menulink{
+    text-align: center;
+    height: auto;
+    padding: 5px;
+}
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+}
+
+.MenuLinkSpan{
+    width: 100%;
+    height: 100vh;
+    background-image: url("../img/menu/btn048_02.png");
+}
+
+.closemenu{
+    transform: translateY(100px);
+}
+
+.openmenu{
+    z-index: 20;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(7,1f);
+    justify-content: space-between;
+    opacity: 1;
+}
+
+.audio_ctl{
+    z-index: 30;
+    position: relative;
+    justify-content: space-between;
+    display: grid;
+}
+
+.bgm{
+    grid-row: 1;
+}
+
+.se{
+ grid-row: 2;
+}
+
+#menu_contents{
+    display: grid;
+}
+
+#Mypage{
+    grid-column: 1;
+}
+#Party{
+    grid-column: 2;
+}
+#Gradeup{
+    grid-column: 3;
+}
+#Quest{
+    grid-column: 4;
+}
+#Userdata{
+    grid-column: 5;
+}
+#Logout{
+    grid-column: 6;
+}
+
+#option-menu-btn{
+    z-index: 11000;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    right: 0;
+    width: 10%;
+    height: 5%;
+    background-color: wheat;
+}
+
+.openoption{
+    z-index: 10000;
+    position: absolute;
+    width: 20%;
+    height: 80%;
+    top:  0;
+    right: 0;
+    background-color: black;
+    opacity: 0.7;
+}
+
+.closeoption{
+    width: 0%;
+    height: 0%;
+    opacity: 0;
+}
+
+.option_content_frame{
+    margin: auto; padding:auto; border: auto;
+    text-align: center;
+    position: relative;
+    background-color: aqua;
+    width: 0px;
+    height: 100%;
+}
+
+.bgm, .se{
+    z-index: 10000;
+}
+
+#option_content_body{
+    margin: auto; padding:auto; border: auto;
+    text-align: center;
+    position: relative;
+}
+
+.loading{
+    z-index: 9999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 1;
+}
+
+.loading-comp{
+    z-index: 9999;
+    position: absolute;
+   
+    pointer-events: none;
+    background-color: white;
+    animation-name: loading;
+    animation-duration: 3s;
+    width: 0;height: 0;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.loading strong{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+@keyframes loading{
+    0%{opacity: 1;  top: 0;left: 0;width: 100%;height: 100%;}
+    50%{opacity: 1;}
+    100%{opacity: 0;width: 0;height: 0;}
+}

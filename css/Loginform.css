@@ -1,0 +1,115 @@
+body,form,p,a{
+  margin: 0;
+}
+
+body{
+ width: 100%;
+ height: 100vh;
+}
+.left{
+  background-color: #555;
+  width: 50%;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+}
+
+
+#loginform{
+  position: absolute;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  border-style: 3px solid #555;
+}
+
+.left #loginform #title{
+  margin: 30px;
+  color: #ccc;
+  text-align: center;
+}
+
+#loginform #startbtn,#createAccount{
+  position: relative;
+  font-size:24px;
+  text-align: center;
+}
+
+.Form{
+   position: relative;
+   margin: 20px;
+}
+
+.Form p{
+    font-size: 16px;
+}
+
+.Form input{
+  border: 1px solid #ccc;
+}
+.Form #IDtitle,#Passtitle,#startbtn{
+  margin-bottom: 20px;
+  color: #2018;
+}
+
+input[type="text"],
+input[type="password"]{
+  width: 300px;
+   padding: 4px;
+   font-size: 14px;
+}
+
+
+.right{
+  background-color: #666;
+  width: 50%;
+  height: 100vh;
+  right: 0;
+  position: absolute;
+  margin: 0;padding: 0;
+}
+
+
+.menuvar {
+  top :30%;
+  width: auto;
+  height: 50%;
+}
+
+
+.menu{
+  left:-85%;
+  text-align: right;
+  position: absolute;
+  margin-left: 0px;
+  color: black;
+  background-color:yellowgreen;
+  width: 100%;
+  height: 25px;
+}
+
+.menu:hover{
+  left: auto;
+  right: 0;
+  text-align: center;
+  background-color: blue;
+}
+
+.menuvar :nth-child(1){
+  top:10%;
+}
+.menuvar :nth-child(2){
+  top:40%;
+}
+.menuvar :nth-child(3){
+  top:70%;
+}
+
+.menu .menutitle{
+  color: #ccc;
+}
+.menu .text{
+  background-color: #ccc;
+  text-align: center;
+  width: 90%;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+      content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="./js/prag/jquery-3.3.1.js"></script>
+    <title>Document</title>
+    <script> 
+        $(window).on('load',function(){
+            $('audio').prop('volume',0);
+            $(".loading").fadeOut();
+        });
+    </script>
+</head>
+<body>
+    <h1>ガチャページ</h1>
+
+    <button onclick="g(0)">0:ガチャを回す</button>
+    <button onclick="g(1)">1:ガチャを回す</button>
+    <button onclick="g(2)">2:ガチャを回す</button>
+    
+    <span id="musictitle"></span>
+    <table id="gacharesult" border="1"></table>
+    <div class="loading" 
+        style="z-index: 1000000;
+        position:absolute;
+        margin: 0;padding: 0;border: 0;
+        width: 100%;height: 100vh;
+        top:0;left: 0;
+        background-color: aquamarine;"
+    >Loading...</div>
+    <script type="text/javascript">
+
+        function g(gId) {
+            $.ajax({
+                url:"php/gachaData.php",
+                cache:false,
+                async:false,
+                data:{
+                    "gachaID":gId
+                },
+                dataType:"json",
+                success:function(data){                       
+                    const resultdata = data;
+                    const gathaTitle = resultdata["musicTitle"];
+                    const itemData = resultdata["itemData"];
+                    let itemlist = "";
+                    for(var i=0; i<itemData.length; i++){
+                        itemlist += "<tr><td>"+itemData[i][1]+"</td><td>"+itemData[i][2]+"</td></tr>";
+                    }
+                    $("#gacharesult").html(itemlist);
+                    $("#musictitle").html(gathaTitle);
+                },
+                error:(function(XMLHttpRequest, textStatus, errorThrown) {
+                　　console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+                　　console.log("textStatus     : " + textStatus);
+                　　console.log("errorThrown    : " + errorThrown.message);              
+                })
+            });
+        }
+    </script>
+
+</body>
+</html>

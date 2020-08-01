@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/MenuVar.css" type="text/css" />
+    <link rel="stylesheet" href="./css/gameFormatStyle.css" type="text/css" />
+    <link rel="stylesheet" href="./css/questselect.css">
+    <script type="text/javascript" src="./js/prag/jquery-3.3.1.js"></script>
+    <link rel="shortcut icon" href="img/menu/loginicon.jpg">
+
+    <title>クエスト選択</title>
+    <script> 
+        $(window).on('load',function(){
+            $('audio').prop('volume',0);
+            $(".loading").addClass('loading_comp');
+            $(".loading").removeClass('loading');
+            $(".loading").fadeOut();
+        });
+    </script>
+</head>
+<body>
+    <audio id="homebgm" type="audio/ogg" src="./audio/bgm/homebgm.ogg" preload="auto" autoplay loop>
+        <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
+    </audio>
+    <img class="bg" src="img/menu/hometest2.jpg">
+    <div class="view">
+        <div class="quest_announce">
+                <div class="leftview">
+                        <div id="user_quest_stetas" class="none_selected">
+                            クエスト成績
+                            <div class="nomal_stetas">
+                                <p class="nomal_title">ノーマル</p>
+                                <div id="max_score">ノーマル:最高スコア</div>
+                                <div id="max_comb">ノーマル:最高コンボ</div>
+                            </div>
+                            <div class="hard_stetas">
+                                    <p class="hard_title">ハード</p>
+                                    <div id="max_score">ハード:最高スコア</div>
+                                    <div id="max_comb">ハード:最高コンボ</div>
+                                </div>
+                                <div class="extream_stetas">
+                                        <p class="extream_title">エクストリーム</p>
+                                        <div id="max_score">エクストリーム:最高スコア</div>
+                                        <div id="max_comb">エクストリーム:最高コンボ</div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="rightview">
+                        <div id="quest_stetas" class="none_visualize_panel">
+                            <div id="quest_view_stetas">
+                                //クエスト詳細情報//
+                            </div>
+                            <div id="start_btn">
+                                <button><a href="/game/battle" onclick="startQuest()">クエスト開始</a></button>
+                            </div>
+                            <div id="party_btn">
+                                <button><a href="/game/page?page-link=party">パーティ編成</a></button>
+                            </div>
+                        </div>
+                </div>
+            <div class="quest_list">
+                <div class="quest_grid">
+                        クエストリスト表示
+                </div>
+            </div>
+      </div>
+    </div>
+
+    <div class="MenuVar-frame"></div>
+
+    <div class="Format-frame"></div>
+    <div class="loading"></div>/div>
+   <script type="text/javascript" src="js/GameFormatInsert.js"></script>
+   <script type="text/javascript" src="js/MenuVarInsert.js"></script>
+
+    <script type="text/javascript">
+        $(window).on('load',function(){
+            $.ajax({
+            url:"./php/questListScene.php",
+            type:"post",
+                success:function(data){
+                    $("#quest_view_stetas").html("");
+                    $("#user_quest_stetas").html("");
+                    $(".quest_grid").html(data["questpanel"]);
+
+                },
+                error:(function(XMLHttpRequest, textStatus, errorThrown) {
+            　　console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+            　　console.log("textStatus     : " + textStatus);
+            　　console.log("errorThrown    : " + errorThrown.message);              
+                })
+            });
+        });
+        
+    function clickQuestPanel(panel_id){
+            //クエスト詳細パネルの表示
+            $.ajax({
+            url:"./php/questListScene.php",
+            type:"post",
+            data:{
+                panelId:panel_id,
+            },
+                success:function(data){
+                    //アニメーション用クラス
+                    $("#quest_view_stetas").html(data["questdata"]);
+                    $("#user_quest_stetas").html(data["userqueststetas"]);
+
+                    $("#user_quest_stetas").removeClass("none_selected");
+                    $("#user_quest_stetas").addClass("selected_quest");
+                    $("#quest_stetas").removeClass("none_visualize_panel");
+                    $("#quest_stetas").addClass("visualize_panel");
+                    //scrollしてトップへ移動
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 500);
+                },
+                error:(function(XMLHttpRequest, textStatus, errorThrown) {
+            　　console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+            　　console.log("textStatus     : " + textStatus);
+            　　console.log("errorThrown    : " + errorThrown.message);              
+                })
+            });
+        }
+        
+        function startQuest(id){
+            $.ajax({
+            url:"./php/questListScene.php",
+            type:"post",
+            data:{
+                questId:id,
+                quest_start:true,
+            },
+                success:function(data){
+                //クエスト開始を送る
+                },
+                error:(function(XMLHttpRequest, textStatus, errorThrown) {
+            　　console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+            　　console.log("textStatus     : " + textStatus);
+            　　console.log("errorThrown    : " + errorThrown.message);              
+                })
+            });
+        }
+    </script>
+</body>
+</html>

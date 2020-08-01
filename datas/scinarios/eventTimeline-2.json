@@ -1,0 +1,32 @@
+{
+    "0":{
+        "text":"<strong>【１．スキルカウントを溜めよう】</strong><br>通常攻撃に成功すると<strong>スキルチャージ</strong>ができるよ！<br>敵からの攻撃を防ぐことでもチャージできるから、まずは溜まるまで攻撃していこう",
+        "imgnm":"",
+        "illegaldata":[],
+        "timing":1
+    },
+    "1":{
+        "text":"<strong>【2．スキルを使おう】</strong><br>上手く溜まったかな？<br>チャージが溜まった状態で攻撃判定に成功すると<strong>スキルが発動するよ！</strong><br>次の攻撃も成功させてスキルを発動してみよう",
+        "imgnm":"",
+        "illegaldata":[],
+        "timing":20
+    },
+    "2":{
+        "text":"<strong>【２．スキルを使おう】</strong><br>一人一つの<strong>アクティブスキル</strong>と<strong>リーダースキル</strong>を持ってるの。<br><strong>チャージして発動するのがアクティブスキル</strong>、<br><strong>条件を満たすことで味方全体に効果があるのがリーダースキル</strong>だよ。",
+        "imgnm":"",
+        "illegaldata":[],
+        "timing":30
+    },
+    "3":{
+        "text":"<strong>【２．スキルを使おう】</strong><br><strong>リーダースキル</strong>は一人目のパーティメンバーのスキルが適用されるから、他のメンバーに合ったリーダーを編成してみてね!",
+        "imgnm":"",
+        "illegaldata":[],
+        "timing":40
+    },
+    "4":{
+        "text":"<strong>【２．スキルを使おう】</strong><br>アクティブスキルは使った後、チャージがリセットされるの。<br>でもまた通常攻撃を繰り返せば溜まっていくから大丈夫！<br>スキルを上手く発動させながら敵を全部倒しちゃおう",
+        "imgnm":"",
+        "illegaldata":[],
+        "timing":50
+    }
+}

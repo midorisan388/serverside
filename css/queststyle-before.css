@@ -1,0 +1,90 @@
+body {
+    overflow-y: scroll;
+}
+.bg{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top:0;
+    left: 0;
+}
+
+.quest_announce{
+    margin: 0;padding: 0;
+    top:0;left: 0;
+    display: grid;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(4, 25%);
+}
+.leftview{
+    opacity: 1;
+    position: relative;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    width: auto;
+    height: auto;
+}
+.rightview{
+    position: relative;
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    height: auto;
+    width: auto;
+}
+.quest_list{
+    position: relative;
+    background-color: burlywood;
+    padding: 1px;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    width: 100%;
+    height: auto;
+}
+
+.quest_grid{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+}
+
+.quest_panel{
+    background-color: aqua;
+    border: 1px solid black;
+    margin: 0px;
+    width: 100%;
+    height: 100px;
+}
+
+.quest_grid :hover{
+    background-color: burlywood;
+}
+
+#user_quest_stetas{
+    transition: all 300ms 0s ease;
+}
+
+.none_selected ,.none_visualize_panel{
+    opacity: 0;
+    width: 0px;height: 0px;
+    transform: translateX(-300px);
+}
+.selected_quest{
+    opacity: 1;
+    position: absolute;
+    width: 100%;height: 100%;
+    background-color: aquamarine;
+    transform: translateX(0px);
+}
+.visualize_panel{
+    opacity: 1;
+    position: absolute;
+    width: 100%;height: 100%;
+    background-color: darkgray;
+    transform: translateX(0px);
+}

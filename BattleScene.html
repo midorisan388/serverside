@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <script type="text/javascript" src="js/prag/jquery-3.3.1.js"></script>
+    <script src="js/sprite.js"></script>
+    
+    <script src="js/Battlescenes/characterdatas.js"></script>
+    <script src="js/Battlescenes/Battlescene_Audio.js"></script>
+    <script src="js/Battlescenes/Battleparty.js"></script>
+    <script src="js/Battlescenes/Battleenemy.js"></script>
+    <script src="js/Battlescenes/NotesClass.js"></script>
+
+    <link rel="stylesheet" href="css/gameFormatStyle.css"/>
+    <link rel="stylesheet" href="css/battlemap.css" />
+    <link rel="shortcut icon" href="img/menu/loginicon.jpg">
+    <title>バトル</title>
+
+</head>
+<body>
+  <div class="gameview">
+    <div class="audiodata" hidden>
+    </div>
+    <div class="battlestageview">
+      <div id="mainview">
+        <img draggable=false id ="back" src="img/battlescene/mapimgtest.jpg">
+        <div class="lernGroup">
+          <img class="lernline" src="img/battlescene/lern.jpg">
+          <img class="lernline" src="img/battlescene/lern.jpg">
+          <img class="lernline" src="img/battlescene/lern.jpg">
+          <img class="lernline" src="img/battlescene/lern.jpg">
+        </div>
+        <canvas id="maincanvas"></canvas>
+      <div id="enemyview">
+        <div class ="enemydamage-content" id="enemyid0"></div>
+        <div class ="enemydamage-content" id="enemyid1"></div>
+        <div class ="enemydamage-content" id="enemyid2"></div>
+        <div class ="enemydamage-content" id="enemyid3"></div>
+       </div>
+      </div>
+      <div class="inputicons">
+        <div class="partymembers-icon" id="member1-icon" value=0>
+        </div>
+        <div class="partymembers-icon" id="member2-icon" value=1>
+        </div>
+        <div class="partymembers-icon" id="member3-icon" value=2>
+        </div>
+        <div class="partymembers-icon" id="member4-icon" value=3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="stetasview">
+        <div class="non_view" id="battle_anounce_party"></div>
+
+        <div class=stetaschild id=enemycount>
+          <table id="judgecount">
+            <thead><td class="score-parent">
+              <span class="scorebord" id="Titlw_h">タイトル</span>
+              <span class="scorebord" id="MISS_h">MISS</span>
+              <span class="scorebord" id="BAD_h">BAD</span>
+              <span class="scorebord" id="GOOD_h">GOOD</span>
+              <span class="scorebord" id="GREAT_h">GREAT</span>
+              <span class="scorebord" id="PARF_h">PARFECT</span>
+              <span class="scorebord" id="Score_h">スコア</span>
+              <span class="scorebord" id="COMB_h">コンボ</span>
+              <span class="scorebord" id="Menu_h">Menu</span>
+            </td></thead>
+            <tbody><td class="score-parent">
+              <span class="scorebord" id="addstetas">タイトルはいるよ</span>
+              <span class="scorebord" id="MISS"></span>
+              <span class="scorebord" id="BAD"></span>
+              <span class="scorebord" id="GOOD"></span>
+              <span class="scorebord" id="GREAT"></span>
+              <span class="scorebord" id="PARF"></span>
+              <span class="scorebord" id="Score"></span>
+              <span class="scorebord" id="COMB"></span>
+              <span class="scorebord" id=returnbutton><a href="/game/page?page-link=my">マイページに戻る</a></span>
+            </td></tbody>
+          </table>
+        </div>
+  </div>
+  <div class="event-content" >
+    <div class="event-content-back"></div>
+    <div class="event-content-img"></div>
+    <div class="event-content-text"></div>
+  </div>
+<div class="startscreen" onclick="playStart()"></div>
+
+  <script type="text/javascript" src="js/GameFormatInsert.js"></script>
+  <script type="text/javascript" src="js/Battlescenes/battlescenemainscript.js"></script>
+  <script src="js/Battlescenes/ScoreCol.js"></script>
+  <script src="js/Battlescenes/battlescene_maincanvas.js"></script>
+
+<script>
+  function Startinit(){
+    for(var index=1; index<=4;index++){
+        $(`#member${index}-icon`).html(`
+          <img draggable="false" draggable=false class="iconImg" id="membericonimg${index}" src="">
+          <div class="back_box" id="backbox_member${index}"></div>
+          <div class="HP_box alive" id="HPbox_member${index}"></div>
+          <img draggable="false" class="Mainframe" id="member${index}" src="img/battlescene/charaframe.jpg">
+          <div class="memberstetasview" id="member${index}stetas">ステータスだよ</div>`);
+      }      
+
+    $.ajax({
+      url:'php/battlePHP/UserBattleStetasSet.php',
+      type:"post",
+      dataType:"json"
+    }).done(function(data){
+      
+      if(data["messege"] === "err"){
+        location.href="/game/page?page-link=quest";
+      }      
+      Init(data);
+      $(".startscreen").html("<div class=start-title-screen><h1><strong>"+data["title"]+"</strong></h1><h2><strong>"+data["audiohtml"][1]+"</strong></h2><div class=leaderSkillText>"+data["leaderSkill"][0]+"<br>"+data["leaderSkill"][1]+"</div><p>touch　to play!</p></div>");
+
+      window.setInterval(()=>{        
+        run();
+      } , 1000/60);
+    }).fail((function(XMLHttpRequest, textStatus, errorThrown) {
+      alert('s:error!!!');
+      console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+      console.log("textStatus     : " + textStatus);
+      console.log("errorThrown    : " + errorThrown.message);
+      console.log("errorThrown    : " + errorThrown.text);
+    }));
+  }
+
+  function playStart(){
+    $(".startscreen").remove();
+    GameStage="Play";//プレイ開始
+    touchStartPlay();
+  }
+
+  window.onload = Startinit;
+
+</script>
+
+</body>
+</html>

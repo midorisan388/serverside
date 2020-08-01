@@ -1,0 +1,131 @@
+
+body{
+    margin: 0;
+  }
+  
+  .magazine-view{
+    position: absolute;
+    margin: 5% 30%;
+    z-index: 1000;
+  }
+  
+  #magazine{
+    position: absolute;
+    transform: translate(100px,0);
+  }
+
+  #magazine .turn-page{
+    background-size: 250 400px;
+    background-color: brown;
+    text-align: center;
+  }
+  
+  .chapter-list-view{
+    background-color: antiquewhite;
+    position: absolute;
+    text-align: center;
+  }
+  
+  .prev-btn, .next-btn{  
+    position: absolute;
+    width: 100px;
+    height: 20px;
+  
+    top: 90%;
+    cursor: pointer;
+  }
+  
+  .prev-btn{
+    left: 10%;
+    background-color: chartreuse;
+  }
+  .next-btn{
+    right: 10%;
+    background-color: red;
+  }
+  
+  .st0{
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    top: 80%;
+  }
+  
+  .page-anounce-view{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 100;
+  }
+  
+  .page-point{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    transform: translate(18px,35px);
+  }
+  
+  .page-anounce-point{
+    display: inline-block;
+    position: absolute;
+    overflow: hidden;
+    left: .6%;
+    width: 100%;
+    height: 20%;
+    top: 70%;
+    opacity: 0.6;
+  }
+  
+  #anounce-point, #anounce-point-title{
+    position: absolute;
+    display: inline-block;
+    top: 70%;
+    width: 10px;
+    height: 10px;
+    background-color: grey;
+  }
+  
+  #anounce-point-title{
+    background-color: orangered;
+  }
+  
+  #anounce-point{
+    background-color: grey;
+  }
+  
+  .chapter-list-view{
+    z-index: 999;
+  }
+
+  .back-img,.before-img,.after-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .before-img-back,.after-img-back{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .before-img{
+    opacity: 0;
+  }
+  
+  .after-img{
+    opacity: 1;
+  }
+  
+  .quest-ui{
+    position: absolute;
+    width: 100px;
+    height: auto;
+    top: 100px;
+    right: 200px;
+    background-color: aliceblue;
+    text-align: center;
+    z-index: 1000;
+  }
+  

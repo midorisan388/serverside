@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="js/prag/jquery-3.3.1.js"></script>
+
+        <title>ajax リクエスト</title>
+    </head>
+    <body>
+        <div id="ajaxres"></div>
+        <button onclick="requestfunc()">リクエスト</button>
+
+        <script type='text/javascript' src='js/ajaxtestcommon.js'></script>
+        <script type="text/javascript" >
+            const succcescallback = function(){
+                alert("成功");
+                return '成功';
+            };
+
+            const erroecallback = function() {
+                alert("失敗");
+                return '失敗';
+            };
+
+            function requestfunc(){
+                console.log("リクエスト送りますー");
+
+                var param ={
+                    'name': 'ユーザー名',
+                    'pass': 'パスワード'
+                };
+
+                 result = connection('POST','/php/ajaxtest.php',param);
+                $('#ajaxres').html(result);   
+            }
+        </script>
+
+    </body>
+</html>

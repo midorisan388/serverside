@@ -1,0 +1,239 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .gridview,.griditem{
+    border: 1px solid red;
+  }
+  .announce{
+    position: absolute;
+    background-color: chartreuse;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+  }
+  
+  .bg{
+    margin: 0;
+    padding: 0;
+    top: 0;left: 0;
+    width: 100%;height: 100vh;
+  }
+  
+  .view-port{
+    position: absolute;
+    margin: 0;padding: 0;border: 0;
+    width: 100%;height: 100vh;
+    top: 0;left: 0;
+    display:grid;
+    grid-template-rows: repeat(5,20%);
+  }
+  .gridview{
+    display: grid;
+  }
+  
+  .select_menu{
+    grid-row: 1/4;
+    height: 400px;
+  }
+  #character_list{
+    background-color: aquamarine;
+  }
+  
+  #character_standimg{
+    z-index: 100;
+    width: 600px;
+    height: auto;
+    position: absolute;
+    right: 0;
+    transform: translateY(-100px);
+    /*
+    width: auto;
+    height: 50vh;
+    */
+  }
+  .party_list{
+    grid-template-columns: repeat(4,25%);
+  }
+
+  .party_view{
+    z-index: 999;
+    grid-row: 4;
+    grid-column-start:1 ;
+  }
+  
+  #character_param{
+    padding: 3px;
+    background-color: beige;
+  }
+  
+  #select_characters_dropdown{
+    width: 100%;
+  }
+
+  .griditem{
+    width: 100%;height: 100%;
+  }
+  
+  .left_view{
+    grid-column-start:1; 
+    grid-column-end:2;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+  }
+  
+  .select_bg{
+    grid-template-columns: 220px;
+  }
+
+  .character_data_view{
+    grid-template-columns: 50% 50%;
+  }
+  .character_img{
+    position: absolute;
+    right: 0;
+    width: 600px;
+    height: 800px;
+    /*
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    text-align: center;
+    */
+  }
+  .character_stetas{
+    grid-column-start: 1;
+    grid-row-start: 1;
+    background-color: aquamarine;
+    opacity: .3;
+    /*
+    grid-column-start: 2;
+    grid-row-start: 1;
+    background-color: aquamarine;
+    */
+  }
+  
+  #character_param{
+    grid-row:3;
+    grid-column: 1;
+  }
+  
+  .character_param_val{
+    grid-row: 1;
+  }
+  
+  #character_skillparam{
+    grid-row: 2;
+  }
+  
+  .select_name{
+    grid-row: 1;
+    grid-column: 1;
+  }
+  
+  .select_job{
+    grid-row: 1;
+    grid-column: 2;
+  }
+  .select_type
+  {
+    grid-row: 2;
+    grid-column: 1;
+  }
+  .select_race{
+    grid-row: 2;
+    grid-auto-columns: 2;  
+  }
+  
+  .right_view{
+    grid-column-start:2; 
+    grid-column-end:7;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    grid-template-columns: repeat(2,50%);
+  }
+  
+  .character_faceimg{
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+    grid-column: 2
+  }
+  .character_fimg{
+    width: auto;
+    height: auto;
+  }
+  #member_1{
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+  #member_2{
+    grid-column-start: 2;
+    grid-row-start: 1;
+  }
+  #member_3{
+    grid-column-start: 3;
+    grid-row-start: 1;
+  }
+  #member_4{
+    grid-column-start: 4;
+    grid-row-start: 1;
+  }
+  
+  .party_joinbtn{
+    grid-row: 1;
+    height: auto;
+    text-align: center;
+  }
+  #patyu_join_func{
+    width: 100%;
+    height: 100%;
+  }
+  .party_member_stetas{
+    grid-row: 3;
+    grid-column: 1/2;
+    background-color: antiquewhite;
+  }
+  
+  .party_param_val{
+    height: auto;
+  }
+  
+  .party_hp, .party_magic{
+    grid-row: 3;
+  }
+  .party_pow, .party_mental{
+    grid-row: 4;
+  }
+  .party_def{
+    grid-row: 5;
+  }
+  
+  .party_name{
+    grid-column: 1;
+  }
+  .party_name, .party_type{
+    grid-row: 1;
+  }
+  .party_job, .party_race{
+    grid-row: 2;
+  }
+  .party_hp, .party_pow, .party_def{
+    grid-column: 1;
+  }
+
+  .party_skill{
+    background-color: aliceblue;
+    grid-column: 2;
+  }
+  .party_skill_name{
+    text-decoration-line: initial;
+  }
+
+  .party_skill_dic{
+    grid-row: 2; 
+  }
