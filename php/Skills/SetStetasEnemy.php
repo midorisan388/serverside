@@ -3,7 +3,7 @@
 ini_set('display_errors',"On");
 error_reporting(E_ALL);
 
-require_once( ROOT_DIR."\php\Skills\SkillClass.php");
+require_once( ROOT_DIR."/php/Skills/SkillClass.php");
 
 /**
  *  @class 状態を敵に付与するスキル
@@ -56,7 +56,7 @@ class SetStetasEnemy extends SkillBase{
      * @return 状態オブジェクト
      */
     private function searchStetas($stId){
-        $stetasFile=file(ROOT_DIR."\datas\csv\StetasDataList.csv");
+        $stetasFile=file(ROOT_DIR."/datas/csv/StetasDataList.csv");
         $setStetas = null;
         //stetasIdsが昇順であることを前提とする
         //IDから状態クラスを生成
@@ -66,7 +66,7 @@ class SetStetasEnemy extends SkillBase{
             $dataIndex =(int)$data[0];
 
             if($dataIndex === $stId){
-                require_once( ROOT_DIR."\php\StetasClass\\".$data[2].".php");
+                require_once( ROOT_DIR."/php/StetasClass//".$data[2].".php");
 
                 //状態オブジェクト生成
                 $setStetas =new $data[2]($data[1],$data[3],$data[4]);

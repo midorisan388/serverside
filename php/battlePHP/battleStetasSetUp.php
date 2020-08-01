@@ -3,9 +3,9 @@
 ini_set('display_errors',"On");
 error_reporting(E_ALL);
 
-require_once( ROOT_DIR."\php\battlePHP\BattleActorStetas.php");
-require_once( ROOT_DIR."\php\battlePHP\EnemyBaseClass.php");
-require_once( ROOT_DIR."\php\getcharacterlist.php");
+require_once( ROOT_DIR."/php/battlePHP/BattleActorStetas.php");
+require_once( ROOT_DIR."/php/battlePHP/EnemyBaseClass.php");
+require_once( ROOT_DIR."/php/getcharacterlist.php");
 
 //初期化
 function SetInitStetas(){
@@ -22,7 +22,7 @@ function SetInitStetas(){
 }
 
 function SetPartyStetas(){
-    require(ROOT_DIR."\datas\sql.php");
+    require(ROOT_DIR."/datas/sql.php");
     $userid = $_SESSION["userid"];//ログインユーザーID
     $partymember_ids=array();
 
@@ -66,7 +66,7 @@ function SetEnemyStetas(){
         
     //if(!isset($_SESSION["enemyStMst"]) && !isset($_SESSION["enemySt"])){
         //敵ステータスをセット
-        $stDateFilePath=ROOT_DIR."\datas\csv\EnemyStetas.csv";
+        $stDateFilePath=ROOT_DIR."/datas/csv/EnemyStetas.csv";
    
         $enemyList = CreateEnemyStetas($_SESSION["questData"][0]["enemyList"]);
         $_SESSION["enemyStMst"] = $enemyList[0];//全敵ステータスリスト
@@ -83,7 +83,7 @@ function CreatePartyStetas($ids){
     $partySt=array();//更新用パーティステータス
     $partyStetas_Origine=array();//ステータスの初期値
     $party_csvData=array();
-    $csvpath = ROOT_DIR."\datas\csv\CharactersStetas.csv";
+    $csvpath = ROOT_DIR."/datas/csv/CharactersStetas.csv";
 
     //パーティのキャラIDを読み込む
     for($index=0;$index<4;$index++){
@@ -94,7 +94,7 @@ function CreatePartyStetas($ids){
             array_push($partyStetas_Origine,getRecord($partyid,$csvpath));//キャラデータの初期値取得(マスターデータ)
 
             //キャラのレベル取得
-            require(ROOT_DIR."\datas\sql.php");
+            require(ROOT_DIR."/datas/sql.php");
             $userid = $_SESSION["userid"];//ログインユーザーID
             //SQL接続-----------------------------------------------------------------
             $sql_list=new PDO("mysql:host=$SERV;dbname=$GAME_DBNAME",$USER,$PASSWORD);
@@ -137,7 +137,7 @@ function CreateEnemyStetas($ids){
     $enemyStetas_Origine=array();//ステータスの初期値
     $enemyStandSt=array();
     $enemy_csvData=array();
-    $csvpath = ROOT_DIR."\datas\csv\EnemyStetas.csv";
+    $csvpath = ROOT_DIR."/datas/csv/EnemyStetas.csv";
 
     //エネミーIDを読み込む
     for($index=0; $index < count($ids); $index++){

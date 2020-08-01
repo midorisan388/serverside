@@ -2,17 +2,17 @@
 ini_set('display_errors',"On");
 error_reporting(E_ALL);
 
-define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."\serverside");
+define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."/serverside");
 
 try{
-require_once( ROOT_DIR."\php\getcharacterlist.php");
-require(ROOT_DIR."\datas\sql.php");
+require_once( ROOT_DIR."/php/getcharacterlist.php");
+require(ROOT_DIR."/datas/sql.php");
 
 $sql_list=new PDO("mysql:host=$SERV;dbname=$GAME_DBNAME",$USER,$PASSWORD);
 $sql_list->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,true);
 $sql_list-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-$csvpath = ROOT_DIR."\datas\csv\CharactersStetas.csv";
+$csvpath = ROOT_DIR."/datas/csv/CharactersStetas.csv";
 $i=0;
 $charadatas = array(getRecord(15,$csvpath),getRecord(18,$csvpath),getRecord(20,$csvpath),getRecord(25,$csvpath),getRecord(26,$csvpath)); //IDでキャラデータ取得
 

@@ -6,8 +6,8 @@ ini_set('log_errors', true);
 ini_set('display_errors',"On" );
 
 session_start();
-define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."\serverside");
-require_once(ROOT_DIR."\php\getDataMusic.php");
+define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."/serverside");
+require_once(ROOT_DIR."/php/getDataMusic.php");
 unset($_SESSION["QUEST_ID"]);
 
 function questDatagenerate($panelId_){
@@ -66,7 +66,7 @@ try{
     }else{
         //1.初回はパネルリスト生成
         //ユーザの状態をクエスト選択状態に変更
-        require_once(ROOT_DIR."\php\UpdateUserStageId.php");
+        require_once(ROOT_DIR."/php/UpdateUserStageId.php");
         UpdateStageId(3,$_SESSION["userid"]);
 
        InitQuestpanel();
@@ -111,7 +111,7 @@ function SelectQuestPanel(){
 
 //クエスト一覧表示パネル生成とパネルIDとクエストデータの対応付け
 function questIdPanelGenerate(){
-    require_once( ROOT_DIR."\php\getDataMusic.php");
+    require_once( ROOT_DIR."/php/getDataMusic.php");
 
     //クエストIDリスト生成
     $questData =array();//表示クエストデータ
@@ -120,7 +120,7 @@ function questIdPanelGenerate(){
     $quest_list="";//クエストパネルリスト<div>要素
 
     //クエストデータリストファイルパス
-    $questFileName= ROOT_DIR."\datas\gameMasterData\questDataList.json";
+    $questFileName= ROOT_DIR."/datas/gameMasterData/questDataList.json";
 
     //クエストデータ取得
     $questJson = file_get_contents($questFileName);//jsonファイル読み込み
@@ -133,7 +133,7 @@ function questIdPanelGenerate(){
     $panel_count=0;
 
     //SQL接続-----------------------------------------------------------------
-    require(ROOT_DIR."\datas\sql.php");
+    require(ROOT_DIR."/datas/sql.php");
     $sql_list=new PDO("mysql:host=$SERV;dbname=$GAME_DBNAME",$USER,$PASSWORD);
     $sql_list->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,true);
     $sql_list-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

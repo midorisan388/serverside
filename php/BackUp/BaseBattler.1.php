@@ -1,7 +1,7 @@
 <?php
-require_once(ROOT_DIR."\php\battlePHP\BattleActorStetas.php");
-require_once(ROOT_DIR."\php\battlePHP\EnemyBaseClass.php");
-require_once( ROOT_DIR."\php\Skills\Require_skillList.php");//スキルファイルリスト
+require_once(ROOT_DIR."/php/battlePHP/BattleActorStetas.php");
+require_once(ROOT_DIR."/php/battlePHP/EnemyBaseClass.php");
+require_once( ROOT_DIR."/php/Skills/Require_skillList.php");//スキルファイルリスト
 
 abstract class BaseBattler{
     private $skillid=0;
@@ -244,7 +244,7 @@ abstract class BaseBattler{
 function setSkillData($sid_,$uId){
     $skillArgument=array();
     $searchId =(int)$sid_;
-    $skillFileLine = file( ROOT_DIR."\datas\csv\SkillList.csv");
+    $skillFileLine = file( ROOT_DIR."/datas/csv/SkillList.csv");
     $skillLineLength = count($skillFileLine);
     $i=0;
     
@@ -271,7 +271,7 @@ function setSkillData($sid_,$uId){
 function setLeaderSkillData($sid_,$uId){
     $skillArgument=array();
     $searchId =(int)$sid_;
-    $skillFileLine = file( ROOT_DIR."\datas\csv\LeaderSkillList..csv");
+    $skillFileLine = file( ROOT_DIR."/datas/csv/LeaderSkillList..csv");
     $i=0;
     
     foreach( $skillFileLine as $skillLine){

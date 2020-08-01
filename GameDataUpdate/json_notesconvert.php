@@ -43,7 +43,7 @@
                     $n=$i+$count;
                     $row_txt = substr($line,$i,$count);
                 }
-                $row_txt .='},'."\n";
+                $row_txt .='},'."/n";
                 $json_conv_txt .= $row_txt;    
             }
             $line_len++;//行数カウント 

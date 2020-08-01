@@ -6,7 +6,7 @@
  * @return 音楽データ
  */
 function getMusicData($qdata){//クエストデータ取得
-    $musicFileName= ROOT_DIR."\datas\gameMasterData\musicDataList.json";//音楽データリストファイルパス
+    $musicFileName= ROOT_DIR."/datas/gameMasterData/musicDataList.json";//音楽データリストファイルパス
 
     //jsonデータ一覧格納
     $musicJson = file_get_contents($musicFileName);

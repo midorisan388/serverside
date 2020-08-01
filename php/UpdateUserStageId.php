@@ -16,7 +16,7 @@ ini_set('display_errors',"On");
 */
 function UpdateStageId($id,$uId){
     //SQL接続-----------------------------------------------------------------
-    require( ROOT_DIR."\datas\sql.php");
+    require( ROOT_DIR."/datas/sql.php");
     $sql_list=new PDO("mysql:host=$SERV;dbname=$GAME_DBNAME",$USER,$PASSWORD);
     $sql_list->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,true);
     $sql_list-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

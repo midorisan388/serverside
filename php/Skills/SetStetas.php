@@ -3,8 +3,8 @@
 ini_set('display_errors',"On");
 error_reporting(E_ALL);
 
-require_once(ROOT_DIR."\php\StetasClass\StClass.php");
-require_once(ROOT_DIR."\php\Skills\SkillClass.php");
+require_once(ROOT_DIR."/php/StetasClass/StClass.php");
+require_once(ROOT_DIR."/php/Skills/SkillClass.php");
 
 /**
  *  @class 状態を自身に付与するスキル
@@ -51,7 +51,7 @@ class SetStetas extends SkillBase{
      * @return 状態オブジェクト
      */
     private function searchStetas($stId){
-        $stetasFile=file(ROOT_DIR."\datas\csv\StetasDataList.csv");
+        $stetasFile=file(ROOT_DIR."/datas/csv/StetasDataList.csv");
         $setStetas = null;
         //stetasIdsが昇順であることを前提とする
         foreach($stetasFile as $stetas){
@@ -64,7 +64,7 @@ class SetStetas extends SkillBase{
                 return [$setStetas,$data[1]];
             }
         }
-        require_once(ROOT_DIR."\php\StetasClass\PowerUp.php");
+        require_once(ROOT_DIR."/php/StetasClass/PowerUp.php");
         return [new PowerUp("攻撃てすと",1,3),"無効値"];
     }
 }

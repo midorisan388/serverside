@@ -1,10 +1,10 @@
 <?php
     ini_set('display_errors',"On");
     error_reporting(E_ALL);  
-    define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."\serverside");
-    require_once(ROOT_DIR."\php\battlePHP\BaseBattler.php");
-    require_once(ROOT_DIR."\php\battlePHP\EnemyBaseClass.php");
-    require_once(ROOT_DIR."\php\getDataMusic.php");
+    define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."/serverside");
+    require_once(ROOT_DIR."/php/battlePHP/BaseBattler.php");
+    require_once(ROOT_DIR."/php/battlePHP/EnemyBaseClass.php");
+    require_once(ROOT_DIR."/php/getDataMusic.php");
 
     session_start();
     
@@ -15,7 +15,7 @@
         header( "Location: /game/page?page-link=quest" );
         exit();
     }else{
-        require_once(ROOT_DIR."\php\UpdateUserStageId.php");
+        require_once(ROOT_DIR."/php/UpdateUserStageId.php");
         UpdateStageId(5,$_SESSION["userid"]);
         InitBattleData();
     }
@@ -33,7 +33,7 @@
 
 
         //SQL接続(クリア状況獲得用)-------------------------------------------------
-        require( ROOT_DIR."\datas\sql.php");
+        require( ROOT_DIR."/datas/sql.php");
         $sql_list=new PDO("mysql:host=$SERV;dbname=$GAME_DBNAME",$USER,$PASSWORD);
         $sql_list->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,true);
         $sql_list-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -85,7 +85,7 @@
         );
 
         //Exp計算
-        $questFileName= ROOT_DIR."\datas\gameMasterData\questDataList.json";
+        $questFileName= ROOT_DIR."/datas/gameMasterData/questDataList.json";
         $questJson = file_get_contents($questFileName);
         $questJson = mb_convert_encoding($questJson, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
         $questArray = json_decode($questJson,true);
@@ -231,7 +231,7 @@
 
     //クエストデータの初期化
     function UnsetQuestSession(){
-        require_once(ROOT_DIR."\php\battlePHP\BattleSessionInit.php");
+        require_once(ROOT_DIR."/php/battlePHP/BattleSessionInit.php");
 
         unset($_SESSION["eventQuestParam"]);    
         unset($_SESSION["QUESTID_LIST"]);

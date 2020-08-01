@@ -2,9 +2,9 @@
 ini_set('display_errors',"On");
 error_reporting(E_ALL);
 
-require_once(ROOT_DIR."\php\battlePHP\BaseBattler.php");
-require_once( ROOT_DIR."\php\getcharacterlist.php");
-require_once(ROOT_DIR."\php\battlePHP\BattleActorStetas.php");
+require_once(ROOT_DIR."/php/battlePHP/BaseBattler.php");
+require_once( ROOT_DIR."/php/getcharacterlist.php");
+require_once(ROOT_DIR."/php/battlePHP/BattleActorStetas.php");
 
 //敵ベースクラス
 class BaseEnemyClass extends BaseBattler{

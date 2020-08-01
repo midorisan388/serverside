@@ -3,9 +3,9 @@
 ini_set('display_errors',"On");
 error_reporting(E_ALL);
 
-define( "ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."\serverside");
+define( "ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."/serverside");
 
-require(ROOT_DIR."\datas\sql.php");
+require(ROOT_DIR."/datas/sql.php");
 
 session_start();
 
@@ -34,7 +34,7 @@ if(!$_SESSION["AP_UPDATE"]){
     $_SESSION["AP_UPDATE"]=true;
 }       
 
-require_once(ROOT_DIR."\php\battlePHP\BattleSessionInit.php");
+require_once(ROOT_DIR."/php/battlePHP/BattleSessionInit.php");
 
 header( "Location: /game/page?page-link=quest" );
 exit();

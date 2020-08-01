@@ -3,10 +3,10 @@
 ini_set("display_errors", 1);
 error_reporting(E_ALL);
 
-define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."\serverside");
+define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."/serverside");
 
-require_once( ROOT_DIR."\php\getcharacterlist.php");//キャラクターデータ取得メゾット
-require(ROOT_DIR."\datas\sql.php");//ユーザー情報テーブル
+require_once( ROOT_DIR."/php/getcharacterlist.php");//キャラクターデータ取得メゾット
+require(ROOT_DIR."/datas/sql.php");//ユーザー情報テーブル
 
 $list="";//表示する選択キャラクターリスト
 $message="";//操作メッセージ
@@ -24,19 +24,19 @@ $panelIddata = [];//パネルに対応するキャラクターIDを格納
 $userid = $_SESSION["userid"];//ユーザー保持
 
 //マスターデータファイル
-$characterfilepath= ROOT_DIR."\datas\csv\CharactersStetas.csv";
+$characterfilepath= ROOT_DIR."/datas/csv/CharactersStetas.csv";
 
 function setStetas($characterId, $cLv){
 
     if($characterId != null){
         //マスターデータファイル
         global $characterfilepath;
-        $skillfilepath="../datas\csv\SkillList.csv";
-        $lSkillfilepath="../datas\csv\LeaderSkillList..csv";
-        $battletype_path="../datas\gameMasterData\battleTypeDataList.json";
-        $job_path="../datas\gameMasterData\jobDataList.json";
-        $race_path="../datas\gameMasterData/raceDataList.json";
-        $weponType_path="../datas\gameMasterData\weponTypeDataList.json";
+        $skillfilepath="../datas/csv/SkillList.csv";
+        $lSkillfilepath="../datas/csv/LeaderSkillList..csv";
+        $battletype_path="../datas/gameMasterData/battleTypeDataList.json";
+        $job_path="../datas/gameMasterData/jobDataList.json";
+        $race_path="../datas/gameMasterData/raceDataList.json";
+        $weponType_path="../datas/gameMasterData/weponTypeDataList.json";
 
         $character_record = getRecord((int)$characterId, $characterfilepath);//キャラクターデータ取得
         $skill_record = getRecord((int)$character_record[21], $skillfilepath);//スキルデータ取得
@@ -278,7 +278,7 @@ function setNewPartyData($userid_, $select_party_){
 }
 
 try{
-    require_once(ROOT_DIR."\php\UpdateUserStageId.php");
+    require_once(ROOT_DIR."/php/UpdateUserStageId.php");
     UpdateStageId(1,$_SESSION["userid"]);
 
     if(isset($_SESSION["PARTY_STETAS"])){

@@ -3,9 +3,9 @@
 ini_set('display_errors',"On");
 error_reporting(E_ALL);
 
-require_once(ROOT_DIR."\php\battlePHP\BaseBattler.php");
-require_once(ROOT_DIR."\php\battlePHP\BattleActorStetas.php");
-require_once(ROOT_DIR."\php\battlePHP\EnemyBaseClass.php");
+require_once(ROOT_DIR."/php/battlePHP/BaseBattler.php");
+require_once(ROOT_DIR."/php/battlePHP/BattleActorStetas.php");
+require_once(ROOT_DIR."/php/battlePHP/EnemyBaseClass.php");
 
 try{
     //スキルの基底クラス

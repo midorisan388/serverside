@@ -5,12 +5,12 @@ ini_set('error_log', '/tmp/php.log');
 ini_set('log_errors', true);
 ini_set('display_errors',"On");
 
-define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."\serverside");
+define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."/serverside");
 
 session_start();
-include ROOT_DIR."\php\battlePHP\BattleSessionInit.php";
-include ROOT_DIR."\php\battlePHP\battleStetasSetUp.php";
-require_once( ROOT_DIR."\php\battlePHP\questDataTest.php");//クエストデータのセットアップ
+include ROOT_DIR."/php/battlePHP/BattleSessionInit.php";
+include ROOT_DIR."/php/battlePHP/battleStetasSetUp.php";
+require_once( ROOT_DIR."/php/battlePHP/questDataTest.php");//クエストデータのセットアップ
 
 
 if(IllegalPageMove($_SESSION["userid"])){
@@ -21,7 +21,7 @@ if(IllegalPageMove($_SESSION["userid"])){
 
   $eventQuestData = EventQuest($_SESSION["QUEST_ID"]);
 
-  require_once(ROOT_DIR."\php\UpdateUserStageId.php");
+  require_once(ROOT_DIR."/php/UpdateUserStageId.php");
   UpdateStageId(4,$_SESSION["userid"]);
   InitBattleSessionData();
 
@@ -92,7 +92,7 @@ function EventQuest($qId){
   foreach ($_SESSION["evnQuestIds"] as $id) {
     if((int)$qId === (int)$id[0]){
       //イベント用jsonデータ取得
-      $eventJson = file_get_contents(ROOT_DIR."\datas\scinarios\\eventTimeline-".$id[0].".json");
+      $eventJson = file_get_contents(ROOT_DIR."/datas/scinarios//eventTimeline-".$id[0].".json");
       $jsondata=mb_convert_encoding($eventJson, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');//文字化け防止
       $jsondata=json_decode($jsondata,true);
 
@@ -140,7 +140,7 @@ function CreateIllegalNotesList($qDt,$nDt){
 //「戻るボタン」などからページに移動してきたら強制的にクエストページに戻す
 function IllegalPageMove($uId){
   //SQL接続-----------------------------------------------------------------
-  require(ROOT_DIR."\datas\sql.php");
+  require(ROOT_DIR."/datas/sql.php");
   $sql_list=new PDO("mysql:host=$SERV;dbname=$GAME_DBNAME",$USER,$PASSWORD);
   $sql_list->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,true);
   $sql_list-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

@@ -6,8 +6,8 @@ require 'password.php';
   ini_set('display_errors',"On");
   error_reporting(E_ALL);
 
-  define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."\serverside");
-  require_once(ROOT_DIR."\datas\sql.php");
+  define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."/serverside");
+  require_once(ROOT_DIR."/datas/sql.php");
   
   function PlayerLoginSetting($id_s){
     unset($_SESSION['userid']);

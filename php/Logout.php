@@ -3,7 +3,7 @@
   error_reporting(E_ALL);
   echo "Cookieさくじょ ";
 try{
-  require_once(ROOT_DIR."\php\UpdateUserStageId.php");
+  require_once(ROOT_DIR."/php/UpdateUserStageId.php");
   UpdateStageId(6,$_SESSION["userid"]);
 
   //ユーザー情報初期化

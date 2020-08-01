@@ -5,12 +5,12 @@
     ini_set('display_errors',"On");
     error_reporting(E_ALL);
 
-    define( "ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."\serverside");
+    define( "ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."/serverside");
 
-    require_once(ROOT_DIR."\php\getcharacterlist.php");//キャラクターレコードを取得する処理ファイル
-    require_once(ROOT_DIR."\datas\sql.php");
+    require_once(ROOT_DIR."/php/getcharacterlist.php");//キャラクターレコードを取得する処理ファイル
+    require_once(ROOT_DIR."/datas/sql.php");
 
-    $csvpath= ROOT_DIR."\datas\csv\CharactersStetas.csv";
+    $csvpath= ROOT_DIR."/datas/csv/CharactersStetas.csv";
     // $id_cookie= $_COOKIE["userid_cookie"];
     $id_cookie = $_SESSION['userid'];
     //$num_cookie=$_COOKIE["usernum_cookie"];
@@ -32,7 +32,7 @@
       'userAP'=>100
     );
     try{
-      require_once(ROOT_DIR."\php\UpdateUserStageId.php");
+      require_once(ROOT_DIR."/php/UpdateUserStageId.php");
       UpdateStageId(0,$_SESSION["userid"]);
 
     //ユーザデータ取得

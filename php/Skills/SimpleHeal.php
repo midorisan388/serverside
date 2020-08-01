@@ -2,7 +2,7 @@
 ini_set('display_errors',"On");
 error_reporting(E_ALL);
 
-require_once(ROOT_DIR."\php\Skills\SkillClass.php");
+require_once(ROOT_DIR."/php/Skills/SkillClass.php");
 
 class SimpleHeal extends SkillBase{//単体回復
     private $heal = 1;//回復量

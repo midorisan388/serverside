@@ -2,8 +2,8 @@
 ini_set('display_errors',"On");
 error_reporting(E_ALL);
 
-require_once( ROOT_DIR."\php\Skills\SkillClass.php");
-require_once( ROOT_DIR."\php\StetasClass\StetasUpgrade.php");
+require_once( ROOT_DIR."/php/Skills/SkillClass.php");
+require_once( ROOT_DIR."/php/StetasClass/StetasUpgrade.php");
 
 //倍率ダメージ+PTに防御UP付与
 class Kikyou extends SkillBase{

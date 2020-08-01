@@ -6,8 +6,8 @@ ini_set('log_errors', true);
 ini_set('display_errors',"On" );
 
 session_start();
-define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."\serverside");
-require_once(ROOT_DIR."\php\getDataMusic.php");
+define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."/serverside");
+require_once(ROOT_DIR."/php/getDataMusic.php");
 
 unset($_SESSION["eventQuestParam"]);
 //unset($_SESSION["QUEST_ID"]);
@@ -69,7 +69,7 @@ try{
         SelectQuestPanel();
     }else{
         //1.初回はパネルリスト生成
-        require_once(ROOT_DIR."\php\UpdateUserStageId.php");
+        require_once(ROOT_DIR."/php/UpdateUserStageId.php");
         UpdateStageId(3,$_SESSION["userid"]);
         InitQuestpanel();
     } 
@@ -116,7 +116,7 @@ function SelectQuestPanel(){
 
 //クエスト一覧表示パネル生成とパネルIDとクエストデータの対応付け
 function questIdPanelGenerate(){
-    require_once( ROOT_DIR."\php\getDataMusic.php");
+    require_once( ROOT_DIR."/php/getDataMusic.php");
 
     //クエストIDリスト生成
     $questArray=array();//全クエストデータ格納用
@@ -124,14 +124,14 @@ function questIdPanelGenerate(){
    
 
     //クエストデータリストファイルパス
-    $questFileName= ROOT_DIR."\datas\gameMasterData\questDataList.json";
+    $questFileName= ROOT_DIR."/datas/gameMasterData/questDataList.json";
 
     //クエストデータ取得
     $questJson = file_get_contents($questFileName);//jsonファイル読み込み
     $questArray = json_decode(mb_convert_encoding($questJson, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN'),true);//連想配列にエンコード
 
     //SQL接続(クリア状況獲得用)-----------------------------------------------------------------
-    require( ROOT_DIR."\datas\sql.php");
+    require( ROOT_DIR."/datas/sql.php");
     $sql_list=new PDO("mysql:host=$SERV;dbname=$GAME_DBNAME",$USER,$PASSWORD);
     $sql_list->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,true);
     $sql_list-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -225,7 +225,7 @@ function UpdateEventParam($id){
 function GetEventQuestList(){
     $evnIds=array();
     //CSV取得
-    $record_data = file(ROOT_DIR."\datas\csv\EventQuestData.csv");//csvファイル読み込み
+    $record_data = file(ROOT_DIR."/datas/csv/EventQuestData.csv");//csvファイル読み込み
     $i=0;
     foreach($record_data as $line){//データ探索
         $data = explode(',',$line);
@@ -260,8 +260,8 @@ function isEventQuest($evnQuestData,$id){
 
 //特殊編成ID一覧生成
 function isEventParty($qd){
-    require_once(ROOT_DIR."\php\getcharacterlist.php");
-    $filepath=ROOT_DIR."\datas\csv\CharactersStetas.csv";
+    require_once(ROOT_DIR."/php/getcharacterlist.php");
+    $filepath=ROOT_DIR."/datas/csv/CharactersStetas.csv";
     $specialCharaIds=array();
 
     $index=0;

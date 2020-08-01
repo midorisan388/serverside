@@ -5,7 +5,7 @@ ini_set('error_log', '/tmp/php.log');
 ini_set('log_errors', true);
 ini_set('display_errors',"On" );
 
-require_once( ROOT_DIR."\php\getDataMusic.php");
+require_once( ROOT_DIR."/php/getDataMusic.php");
 
 /**
  * クエストデータ取得
@@ -18,8 +18,8 @@ function setQuestDate($qId){
     //使用データ格納・連想配列初期化
         $questData =array();
         
-        $questFileName= ROOT_DIR."\datas\gameMasterData\questDataList.json";
-        $musicFileName= ROOT_DIR."\datas\gameMasterData\musicDataList.json";
+        $questFileName= ROOT_DIR."/datas/gameMasterData/questDataList.json";
+        $musicFileName= ROOT_DIR."/datas/gameMasterData/musicDataList.json";
 
         $questJson = file_get_contents($questFileName);
         $questJson = mb_convert_encoding($questJson, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');

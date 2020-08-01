@@ -6,9 +6,9 @@ require 'php/password.php';
   ini_set('display_errors',"On");
   error_reporting(E_ALL);
 
-  define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."\serverside");
+  define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."/serverside");
 
-  require_once(ROOT_DIR."\php\getcharacterlist.php");//キャラクターレコードを取得する処理ファイル
+  require_once(ROOT_DIR."/php/getcharacterlist.php");//キャラクターレコードを取得する処理ファイル
 
   $id_cookie = $_SESSION['userid'];
   define("CHARACTER_IMG_DIR","./img/characters");
@@ -33,7 +33,7 @@ require 'php/password.php';
   );
 
   try{
-    require_once(ROOT_DIR."\php\UpdateUserStageId.php");
+    require_once(ROOT_DIR."/php/UpdateUserStageId.php");
     UpdateStageId(2,$_SESSION["userid"]);
 
     //SQL接続-----------------------------------------------------------------

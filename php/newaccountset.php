@@ -5,8 +5,8 @@
   ini_set('display_errors',"On");
   error_reporting(E_ALL);
 
-  define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."\serverside");
-  require_once(ROOT_DIR."\datas\sql.php");
+  define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."/serverside");
+  require_once(ROOT_DIR."/datas/sql.php");
 
   $login_succes=false;
   $log_mes="アカウント登録";
@@ -45,7 +45,7 @@
 
       try{
           //SQL接続-----------------------------------------------------------------
-          $quest_data_file= ROOT_DIR."\datas\gameMasterData\questDataList.json";//クエストデータファイルパス
+          $quest_data_file= ROOT_DIR."/datas/gameMasterData/questDataList.json";//クエストデータファイルパス
 
           $sql_list=new PDO("mysql:host=$SERV;dbname=$GAME_DBNAME",$USER,$PASSWORD);
           $sql_list->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,true);

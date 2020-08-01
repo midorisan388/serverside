@@ -3,14 +3,14 @@
 ini_set('display_errors',"On");
 error_reporting(E_ALL);      
 
-define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."\serverside");
+define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']."/serverside");
 
-require_once(ROOT_DIR."\php\NotesGlobal.php");
-require_once(ROOT_DIR."\php\battlePHP\BaseBattler.php");
-require_once(ROOT_DIR."\php\battlePHP\EnemyBaseClass.php");
-require_once( ROOT_DIR."\php\battlePHP\BattleActorStetas.php");
+require_once(ROOT_DIR."/php/NotesGlobal.php");
+require_once(ROOT_DIR."/php/battlePHP/BaseBattler.php");
+require_once(ROOT_DIR."/php/battlePHP/EnemyBaseClass.php");
+require_once( ROOT_DIR."/php/battlePHP/BattleActorStetas.php");
 session_start();
-require_once( ROOT_DIR."\php\NotesCounter.php");
+require_once( ROOT_DIR."/php/NotesCounter.php");
 
 class BatttleActorsManager{
 
