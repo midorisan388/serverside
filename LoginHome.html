@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ログイン</title>
+    <script type="text/javascript" src="js/prag/jquery-3.3.1.js"></script>
+
+    <link rel="shortcut icon" href="img/menu/loginicon.jpg">
+    <link rel="stylesheet" href="css/Loginform.css">
+
+  </head>
+  <body>
+    <div class="right">
+        <div class="menuvar">
+        <div class="menu" id="News">
+          <div class="menutitle">News</div>
+          <div class="text">
+            お知らせとかの内容
+          </div>
+        </div>
+        <div class="menu" id="Announce">
+          <div class="menutitle">Announce</div>
+          <div class="text" id="erroenews">
+            不具合とかの内容
+          </div>
+        </div>
+        <div class="menu" id="Help">
+          <div class="menutitle">Help</div>
+          <div class="text">
+            ヘルプとかの内容
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="left">
+      <div id="loginform">
+        <p id ="title">-----------ログイン画面----------</p>
+        <form class="Form" action="/game/php/Login.php" method="get">
+           <p id="IDtitle">ID:</p><input id="nametext" name="userid" type="text" size="5">
+           <p id="Passtitle">PASS:</p><input id=passtext name="userpass" type="password" size="12">
+          <input id ="startbtn" type="submit" name="Loginbtn" value="Login">
+        </form>
+
+      <div id="createAccount"><a href="/game/new">新規登録はこちら</a></div>
+    </div>
+    </div>
+  </body>
+</html>

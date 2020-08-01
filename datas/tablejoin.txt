@@ -1,0 +1,4 @@
+select account.userid,account.userpass,account.userNo,data.username,data.userLank,data.userEXP,data.userplay_start,data.userplay_last
+from useraccountdata as account
+inner join userdata as data
+on account.userid=id AND account.userpass=pass;

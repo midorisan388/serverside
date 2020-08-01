@@ -1,0 +1,22 @@
+body{
+  font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN','American Typewriter','ＭＳ Ｐ明朝','MS PMincho',sans-serif;
+  margin: 0;padding: 0;border: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.outputview{
+  position:absolute;
+  margin:0;padding:0;border:0;
+  top:10vh;left:0px;
+  width:100%;
+  height:90vh;
+}
+
+.Mainhtml{
+  position: absolute;
+  margin:0;padding:0;border:0;
+  left:0;top:0;
+  width: 100%;
+  height: 90vh;
+}

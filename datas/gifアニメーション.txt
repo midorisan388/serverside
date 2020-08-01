@@ -1,0 +1,37 @@
+
+  <div class="characters">
+      <img  class="partystand" id="member1" src="img/Idle0.gif">
+      <img  class="partystand" id="member2" src="img/Idle0.gif">
+      <img  class="partystand" id="member3" src="img/Idle0.gif">
+      <img  class="partystand" id="member4" src="img/Idle0.gif">
+    </div>
+
+
+-----css------------------------
+.characters{
+    top:10px;
+    width: auto;
+}
+.partystand{
+    z-index: 30;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    right: 80px;
+}
+
+.characters :nth-child(1){
+  top:190px;
+}
+
+.characters :nth-child(2){
+    top:260px;
+}
+
+.characters :nth-child(3){
+    top:330px;
+}
+
+.characters :nth-child(4){
+    top:400px;
+}

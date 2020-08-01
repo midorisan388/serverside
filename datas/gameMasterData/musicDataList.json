@@ -1,0 +1,39 @@
+{
+    "0":{
+        "ID":0,
+        "musictitle":"前奏",
+        "audioFilePath":"audio/bgm/battle0.ogg",
+        "notesFilePath":"../../datas/Notesfile/Tutorial1.json"
+    },
+    "1":{
+        "ID":1,
+        "musictitle":"逃走劇",
+        "audioFilePath":"audio/bgm/battle1.ogg",
+        "notesFilePath":"../../datas/Notesfile/Tutorial2.json"
+    },
+    "2":{
+        "ID":2,
+        "musictitle":"戦火",
+        "audioFilePath":"audio/bgm/battle2.ogg",
+        "notesFilePath":"../../datas/Notesfile/notestest-1.json"
+    },
+    "3":{
+        "ID":3,
+        "musictitle":"祈願",
+        "audioFilePath":"audio/bgm/battle3.ogg",
+        "notesFilePath":"../../datas/Notesfile/Tutorial2.json"
+        
+    },
+    "4":{
+        "ID":4,
+        "musictitle":"悲哀",
+        "audioFilePath":"audio/bgm/boss0.ogg",
+        "notesFilePath":"../../datas/Notesfile/notestest-1.json"
+    },
+    "5":{
+        "ID":5,
+        "musictitle":"先陣",
+        "audioFilePath":"audio/bgm/battle2.ogg",
+        "notesFilePath":"../../datas/Notesfile/notestest-1.json"
+    }
+}

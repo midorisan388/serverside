@@ -1,0 +1,77 @@
+<div class="main-contents">
+        <div class="left-contents">
+            <div id="user-main-character"><img draggable="false" class="user-main-character-img" src=""></div>
+        </div>
+        <div class="right-contents">
+            <div id="user-status-contents">
+                <div class="user-status-frame">
+                    <div id="user-status-main">
+                         <div id="user-status-basedata">
+                             <div id="user-name">
+
+                             </div>
+                             <div id="user-rank">
+                                 <p id="user-rank-main">Rank </p>
+                                 <div class="user-status-exp">
+                                     <div id="user-exp-bars">
+                                         <div id="user-rank-back"></div>
+                                        <div id="user-rank-bar"></div>
+                                    </div>
+                                     <div id="user-rank-exp">
+                                         <span id="have-exp"></span>/<span id="need-exp"></span>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                    
+                        <div class="user-status-questcount">
+                            <div id="questcount-title">クエストカウント</div>
+                            <div id="questcount-clearcount"><span>クエストクリアカウント</span>回</div>
+                            <div class="quest-grade-main">
+                                 <div id="quest-grade-title">成績タイトル</div>
+                                 <div id="quest-grade-bad"><span id="bad">バッド</span>%</div>
+                                 <div id="quest-grade-nice"><span id="nice">ナイス</span>%</div>
+                                 <div id="quest-grade-gread"><span id="gread">グレート</span>%</div>
+                                 <div id="quest-grade-parfect"><span id="parfect">パーフェクト</span>%</div>
+                            </div>
+                            <div class="user-collection-main">
+                                <div id="character-possession"><span id="user-character-possession">5</span>/<span id="character-max">12</span></div>
+                                <div id="wepon-possession"><span id="user-wepon-possession">10</span>/<span id="wepon-max">30</span></div>
+                            </div>
+                            <div class="user-accountdata">
+                                <div id="start-data">
+                                    ゲーム登録日:<div id="sdata"></div>
+                                    最終ログイン日:<div id="newdata"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<script type="text/javascript">
+     $(window).on('load',function(){
+        $.ajax({
+        url:"./Useraccountpage.php",
+        type:"post",
+            success:function(data){                
+                var img = data["char_img_url"],
+                    user = data["userdt"];
+
+                $(".user-main-character-img").attr("src",img);
+                $("#have-exp").html(user["userexp"]);
+                $("#need-exp").html(user["usernextexp"]);
+                $("#user-rank-main").html("Rank" + user["userrank"]);
+                $("#user-name").html(user["username"]);
+                $("#sdata").html(user["sdata"]);
+                $("#newdata").html(user["lastdata"]);
+            },
+            error:(function(XMLHttpRequest, textStatus, errorThrown) {
+        　　console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        　　console.log("textStatus     : " + textStatus);
+        　　console.log("errorThrown    : " + errorThrown.message);              
+            })
+        });
+    });
+</script>

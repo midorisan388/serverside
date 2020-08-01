@@ -1,0 +1,84 @@
+body{
+    font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN','American Typewriter','ＭＳ Ｐ明朝','MS PMincho',sans-serif;
+
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+
+    margin: 0;padding: 0;border: 0ch;
+}
+
+.main-contents{
+    position: absolute;
+    display: flex;
+    background-color: aquamarine;
+    width: 100%;
+    height: 100vh;
+}
+
+.left-contents{
+    position: relative;
+
+    background-color: darkkhaki;    
+}
+
+.right-contents{
+    margin: 10px;padding: 5px;border: 0ch;
+    position: absolute;
+    right: 0px;
+    width: 40%;
+    top: 60px;
+    background-color:salmon;
+}
+#user-status-contents{
+    background-color: coral;
+    position: relative;
+}
+.user-status-frame{
+    border: 3px solid honeydew;
+}
+#user-status-main{
+    border: 3px solid seagreen;
+}
+#user-status-basedata{
+    padding: 5px;
+    background-color: antiquewhite;
+    text-align: center;
+}
+#user-rank{
+    position: relative;
+}
+.user-status-exp{
+    position: relative;
+    display: block;
+}
+#user-exp-bars{
+    
+    position: absolute;
+    width: 100%;
+}
+#user-rank-back,#user-rank-bar{
+    position: absolute;
+    top: -10px;
+    height: 20px;
+}
+#user-rank-back{
+    background-color: black;
+    width:100% ;
+}
+#user-rank-bar{
+    background-color: aqua;
+    width: 80% ;
+}
+
+#user-rank-exp{
+    text-align: center;
+    color: white;
+    position: relative;
+    top: -10px;
+    z-index: 1000;
+}
+
+.user-main-character-img{
+    height: 100vh;
+}

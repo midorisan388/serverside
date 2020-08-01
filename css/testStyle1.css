@@ -1,0 +1,352 @@
+body{
+    margin: 0;
+}
+
+
+.main{
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    left: 10%;
+}
+
+.back-img{
+    position: absolute;
+    background: url("../img/battlescene/mapimgtest.jpg");
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.party-face-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.standtest{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.face-img{
+    position: absolute;
+    width: 15%;
+    height: 100%;
+}
+
+#face-img1{
+    left: 5%;
+    background-color: chocolate;
+}
+
+#face-img2{
+    left: 30%;
+    background-color: aqua;
+}
+
+#face-img3{
+    left: 55%;
+    background-color: hotpink;
+}
+
+#face-img4{
+    left: 80%;
+    background-color: black;
+}
+
+.game-play-view{
+    z-index: 100;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.lern-group{
+    position: absolute;
+
+    top: 32%;
+    width: 100%;
+    height: 80%;
+}
+
+.play-lern{
+    position: absolute;
+   
+    width: 5%;
+    height: 100%;
+    top: 0;
+    display: block;
+    left: 48%;
+
+    animation-name: openlern;
+    animation-duration: 2s;
+
+}
+
+.lern-line{
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    left: 50%;
+    background: url("../img/battlescene/lern.jpg");
+}
+
+#lern1{
+    left: 10%;
+    animation-name: transform-lern1;
+    animation-duration: 2s;
+}
+
+#lern2{
+    animation-name: transform-lern2;
+    animation-duration: 2s;
+    left: 35%;
+}
+
+#lern3{
+    animation-name: transform-lern3;
+    animation-duration: 2s;
+    left: 60%;
+}
+
+#lern4{
+    animation-name: transform-lern4;
+    animation-duration: 2s;
+    left: 85%;
+}
+
+.center-lern{
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    left: 50%;
+    background-color: chartreuse;
+}
+
+.party-icon{
+    z-index: 110;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(4,25%);
+    justify-content: space-between;
+
+    background-color: crimson;
+    left: 10%;
+    width: 80%;
+    height: 20%;
+    bottom: 0;
+}
+
+.touch-point{
+    position: relative;
+    width: 100%;
+    height: 10%;
+
+    animation-name: movetouchpoint1;
+    animation-duration: 2s;
+
+    background-color: antiquewhite;
+    top:40%;
+}
+
+.notes-start-point{
+    z-index: 110;
+    position: absolute;
+    left: 38%;
+    width: 25%;
+    height: 25%;
+}
+
+.notes-start-point img{
+    width: 100%;
+    height: 100%;
+}
+
+.enemy-view{
+    z-index: 110;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 15%;
+
+    animation: openenemyview 2s;
+    width: 50%;
+}
+
+.enemy-status{
+    padding: 5px;
+    width: 80%;
+    height: 80%;
+}
+.enemy-face{
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    background: url("../img/characters/img1.png");
+}
+.enemy-health{
+    position: absolute;
+    left: 21%;
+    width: 78%;
+    height: 100%;
+    background-color: greenyellow;
+}
+
+.lerder-view{
+    z-index: 110;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 15%;
+
+    animation: openlerderview 2s;
+    width: 50%;
+}
+.lerder-status{
+    padding: 5px;
+    width: 80%;
+    height: 80%;
+}
+.lerder-face{
+    position: absolute;
+    left: 80%;
+    width: 20%;
+    height: 100%;
+    background: url("../img/characters/1470010101.png");
+}
+.lerder-over{
+    position: absolute;
+    width: 78%;
+    height: 100%;
+    background-color: red;
+}
+
+.member-icon img{
+    position: absolute;
+    width: 25%;
+    height: 100%;
+}
+
+#icon1{
+    grid-column: 1;
+}
+#icon2{
+    grid-column: 2;
+}
+#icon3{
+    grid-column: 3;
+}
+#icon4{
+    grid-column: 4;
+}
+
+.side-view{
+    position: absolute;
+    top: 15%;
+    width: 10%;
+    height: 85%;
+}
+
+.loading-img{
+    width: 100%;
+    height: 0%;
+    background-color: crimson;
+    animation-name: loadingscore;
+    animation-direction: 2s;
+}
+
+.game-score-view{
+    z-index: 110;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.tap-img{
+    z-index: 999;
+    text-align: center;
+    text-shadow: 2px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+
+    animation-name: tapscreen;
+    animation-duration: 3s;
+    opacity: 0.5;
+}
+
+.tap-img p{
+    animation-name: tapscreen-text;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.taped-img{
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+@keyframes tapscreen-text{
+    0% { opacity: 1;}
+    50% { opacity: 0;}
+    100% { opacity: 1;}
+}
+
+@keyframes tapscreen{
+    0% { opacity: 1;}
+    100% { opacity: 0.5;}
+}
+
+@keyframes loadingscore{
+    0% { width: 100%; height: 100%;}
+    25% { width: 100%; height: 100%;}
+    50% { width: 100%; height: 100%;}
+    75% { width: 100%; height: 100%;}
+    100% { width: 100%;height: 0%;}
+}
+
+@keyframes openenemyview{
+    0% { width: 0%; left: 50%;}
+    100% {width: 50%;left: 0%;}
+}
+@keyframes openlerderview{
+    0% { width: 0%; right: 50%;}
+    100% {width: 50%; right: 0%;}
+}
+
+@keyframes openlern{
+    0% {background-color: black; width: 0; height: 10%;}
+    50% {background-color: black; }
+    75% {background-color: white; height: 80%;}
+    100% {background-color: brown; width: 5%; height: 100%;}
+}
+
+@keyframes movetouchpoint1{
+    0% {top: 0%;}
+    100% {top: 40%;}
+}
+
+@keyframes transform-lern1{
+    0% {left: 48%;}
+    100% {left: 10%;}
+}
+
+@keyframes transform-lern2{
+    0% {left: 48%;}
+    100% {left: 35%;}
+}
+
+@keyframes transform-lern3{
+    0% {left: 48%;}
+    100% {left: 60%;}
+}
+
+@keyframes transform-lern4{
+    0% {left: 48%;}
+    100% {left: 85%;}
+}

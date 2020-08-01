@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/partyChange.css">
+    <script type="text/javascript" src="js/prag/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="./css/MenuVar.css" type="text/css" />
+    <link rel="stylesheet" href="./css/gameFormatStyle.css" type="text/css" />
+    <link rel="shortcut icon" href="img/menu/loginicon.jpg">
+
+    <title>パーティ編成</title>
+    <script> 
+        $(window).on('load',function(){
+            $('audio').prop('volume',0);
+            $(".loading").addClass('loading_comp');
+            $(".loading").removeClass('loading');
+            $(".loading").fadeOut();
+        });
+  </script>
+</head>
+<body>
+    <audio id="homebgm" type="audio/ogg" src="./audio/bgm/homebgm.ogg" preload="auto" autoplay loop>
+        <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
+    </audio>
+    <img draggable=false draggable=false class="bg" src="./img/menu/menuback.jpg"> 
+    <div class="view-port gridview">
+        <div class="select_menu griditem">
+            <div class="select_bg gridview griditem">
+                <div class="left_view">
+                    <div class="griditem" id="character_list">
+                        <select id="select_characters_dropdown" onchange="selectCharacterpanel()">
+
+                        </select>
+                    </div>
+                </div>
+                <div class="right_view griditem">
+                    <div class="character_data_view gridview griditem">
+                        <div class="character_img griditem">
+                            <img draggable=false id="character_standimg" alt="キャラ立ち絵" src="img/characters/145901/1459010201.png">
+                        </div>
+                        <div class="character_stetas griditem gridview">
+                            <div class="griditem" id="select_name">キャラ名</div><div id="select_job">ジョブ系統</div>
+                            <div class="griditem" id="select_type" >戦闘タイプ</div><div class="griditem" id="select_race">種族</div>
+                            <div class="gridview" id="character_param">
+                                <div class="griditem character_param_val" id="select_hp">HP:</div>
+                                <div class="griditem character_param_val" id="select_pow">攻撃力:</div>
+                                <div class="griditem character_param_val" id="select_deff">防御力:</div>
+                                <div class="griditem character_param_val" id="select_magic">魔力:</div>
+                                <div class="griditem character_param_val" id="select_mental">精神力:</div>
+                            </div>
+                            <div id="character_skillparam">
+                                <div id="select_skill_name">スキル名</div>
+                                <div id="select_skill_ct">CT:</div>
+                                <div id="select_skill_func">スキル効果:</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="party_view griditem">
+            <div class="gridview party_bg">
+                <div class="party_list gridview griditem">
+                    <div class="griditem" id="member_1">
+                            <div class="party_joinbtn griditem" id="joinmember_1"><button id="patyu_join_func" onclick="setPartyNewData(0)">編成する</button></div>
+                            <div class="character_faceimg gridview griditem" id="member_face1">
+                                <img draggable=false class="character_fimg" id="face_img_member_1" alt="顔グラ~" src="img/characters/103601/1036010101.png">
+                                <div class="party_skill gridview griditem">
+                                        <div class="party_skill_name" id="party_skill_name_1">スキル名</div>
+                                        <div class="party_skill_dic" id="party_skill_dic_1">スキル説明</div>
+                                </div>
+                            </div>
+                            <div class="party_member_stetas gridview" id="party_stetas_1">
+                                    <div class="party_param_val party_name" id="party_name_1">キャラ名</div><div class="party_param_val party_job" id="party_job_1">ジョブ</div>
+                                    <div class="party_param_val party_type" id="party_type_1">戦闘タイプ</div><div class="party_param_val party_race" id="party_race_1">種族</div>
+                                    <div class="party_param_val party_hp" id="party_hp_1">HP:</div>
+                                    <div class="party_param_val party_pow" id="party_pow_1">攻撃力:</div>
+                                    <div class="party_param_val party_def" id="party_def_1">防御力:</div>
+                                    <div class="party_param_val party_magic" id="party_magic_1">魔力:</div>
+                                    <div class="party_param_val party_mental" id="party_mental_1">精神力:</div>
+                            </div>
+                    </div>
+                    <div class="griditem " id="member_2">
+                            <div class="party_joinbtn griditem" id="joinmember_2"><button id="patyu_join_func" onclick="setPartyNewData(1)">編成する</button></div>
+                            <div class="character_faceimg gridview griditem" id="member_face2">
+                                <img draggable=false class="character_fimg" id="face_img_member_2" alt="顔グラ~" src="img/characters/103601/1036010101.png">
+                                <div class="party_skill gridview griditem">
+                                        <div class="party_skill_name" id="party_skill_name_2">スキル名</div>
+                                        <div class="party_skill_dic" id="party_skill_dic_2">スキル説明</div>
+                                </div>
+                            </div>
+                            <div class="party_member_stetas gridview" id="party_stetas_2">
+                                    <div class="party_param_val party_name" id="party_name_2">キャラ名</div><div class="party_param_val party_job" id="party_job_2">ジョブ</div>
+                                    <div class="party_param_val party_type" id="party_type_2">戦闘タイプ</div><div class="party_param_val party_race" id="party_race_2">種族</div>
+                                    <div class="party_param_val party_hp" id="party_hp_2">HP:</div>
+                                    <div class="party_param_val party_pow" id="party_pow_2">攻撃力:</div>
+                                    <div class="party_param_val party_def" id="party_def_2">防御力:</div>
+                                    <div class="party_param_val party_magic" id="party_magic_2">魔力:</div>
+                                    <div class="party_param_val party_mental" id="party_mental_2">精神力:</div>
+                            </div>
+                    </div>
+                    <div class="griditem" id="member_3">
+                            <div class="party_joinbtn griditem" id="joinmember_3"><button id="patyu_join_func" onclick="setPartyNewData(2)">編成する</button></div>
+                            <div class="character_faceimg gridview griditem" id="member_face3">
+                                <img class="character_fimg" id="face_img_member_3" alt="顔グラ~" src="img/characters/103601/1036010101.png">
+                                <div class="party_skill gridview griditem">
+                                        <div class="party_skill_name" id="party_skill_name_3">スキル名</div>
+                                        <div class="party_skill_dic" id="party_skill_dic_3">スキル説明</div>
+                                </div>
+                            </div>
+                            <div class="party_member_stetas gridview" id="party_stetas_3">
+                                    <div class="party_param_val party_name" id="party_name_3">キャラ名</div><div class="party_param_val party_job" id="party_job_3">ジョブ</div>
+                                    <div class="party_param_val party_type" id="party_type_3">戦闘タイプ</div><div class="party_param_val party_race" id="party_race_3">種族</div>
+                                    <div class="party_param_val party_hp" id="party_hp_3">HP:</div>
+                                    <div class="party_param_val party_pow" id="party_pow_3">攻撃力:</div>
+                                    <div class="party_param_val party_def" id="party_def_3">防御力:</div>
+                                    <div class="party_param_val party_magic" id="party_magic_3">魔力:</div>
+                                    <div class="party_param_val party_mental" id="party_mental_3">精神力:</div>
+                            </div>
+                    </div>
+                    <div class="griditem" id="member_4">                     
+                            <div class="party_joinbtn griditem" id="joinmember_4"><button id="patyu_join_func" onclick="setPartyNewData(3)">編成する</button></div>
+                            <div class="character_faceimg gridview griditem" id="member_face4">
+                                <img class="character_fimg" id="face_img_member_4" alt="顔グラ~" src="img/characters/103601/1036010101.png">
+                                <div class="party_skill gridview griditem">
+                                        <div class="party_skill_name" id="party_skill_name_4">スキル名</div>
+                                        <div class="party_skill_dic" id="party_skill_dic_4">スキル説明</div>
+                                </div>
+                            </div>
+                            <div class="party_member_stetas gridview" id="party_stetas_4">
+                                    <div class="party_param_val party_name" id="party_name_4">キャラ名</div><div class="party_param_val party_job" id="party_job_4">ジョブ</div>
+                                    <div class="party_param_val party_type" id="party_type_4">戦闘タイプ</div><div class="party_param_val party_race" id="party_race_4">種族</div>
+                                    <div class="party_param_val party_hp" id="party_hp_4">HP:</div>
+                                    <div class="party_param_val party_pow" id="party_pow_4">攻撃力:</div>
+                                    <div class="party_param_val party_def" id="party_def_4">防御力:</div>
+                                    <div class="party_param_val party_magic" id="party_magic_4">魔力:</div>
+                                    <div class="party_param_val party_mental" id="party_mental_4">精神力:</div>
+                            </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="loading"></div>
+
+    <script type="text/javascript" src="js/GameFormatInsert.js"></script>
+    <script type="text/javascript" src="js/MenuVarInsert.js"></script>
+    <script type="text/javascript">
+        $(window).on('load',function(){
+            $.ajax({
+               url:"./php/PartyMemberChange.php",
+               type:"post",
+
+                success:function(data){
+                    const 
+                        select_cdata = data["selectharacter"]
+                        partydata = data["partystetas"];
+
+                       if(partydata[0]["character_id"] !== null){
+                           init_faceimg= "img/characters/"+partydata[0]["character_img_id"]+"/"+partydata[0]["character_img_id"]+"0201.png";
+                       }else{
+                        init_faceimg= "img/characters/103601/1036010201.png";
+                       }
+
+                    if(data["selectharacter"] !== 0)setSelectCharacter(select_cdata);
+                    setPartyStetas(partydata);
+                    setStetasPanel(data);
+                    $("#character_standimg").attr("src",init_faceimg);    
+                    $(".loading").fadeOut();
+                 },
+                error:(function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("a!!");
+              　　console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+              　　console.log("textStatus     : " + textStatus);
+              　　console.log("errorThrown    : " + errorThrown.message);                                  
+                })
+            });
+        });
+        
+
+        function setStetasPanel(data_){            
+            $("#select_characters_dropdown").html(data_["listpanel"]);
+        }
+
+        function setSelectCharacter(sedata_){
+            if(sedata_["character_id"] !== null){
+                const 
+                    select_stetas = sedata_["stetas"],
+                    select_skill = sedata_["character_skilldata"],
+                    select_faceimg= "img/characters/"+sedata_["character_img_id"]+"/"+sedata_["character_img_id"]+"0201.png";
+
+                $("#character_standimg").attr("src",select_faceimg);    
+                $("#select_name").html(sedata_["character_name"]);
+                $("#select_job").html("ジョブ:"+sedata_["character_job"]);
+                $("#select_type").html("タイプ:"+sedata_["character_battleType"]);
+                $("#select_race").html("種族:"+sedata_["character_race"]);
+                $("#select_hp").html("HP:"+select_stetas["hp"]);
+                $("#select_pow").html("攻撃力:"+select_stetas["pow"]);
+                $("#select_deff").html("防御力:"+select_stetas["def"]);
+                $("#selectmagic").html("魔力:"+select_stetas["magic"]);
+                $("#select_mental").html("精神力:"+select_stetas["mental"]);
+                $("#select_skill_name").html(select_skill["skill_name"]);
+                $("#select_skill_ct").html('CT:'+select_skill["skill_ct"]);
+                $("#select_skill_func").html(select_skill["skill_discription"]);
+            }else{
+                $("#character_standimg").attr("src","");    
+                $("#select_name").html("編成しない");
+                $("#select_job").html("");
+                $("#select_type").html("");
+                $("#select_race").html("");
+                $("#select_hp").html("");
+                $("#select_pow").html("");
+                $("#select_deff").html("");
+                $("#selectmagic").html("");
+                $("#select_mental").html("");
+                $("#select_skill_name").html("");
+                $("#select_skill_ct").html("");
+                $("#select_skill_func").html("");
+            }
+        }
+
+        function setPartyStetas(pdata_){
+            for(let i=1; i<=4; i++){
+                if(pdata_[i-1]["character_id"] !== null){
+                    const 
+                        party_param = pdata_[i-1],
+                        party_stetas=party_param["stetas"],
+                        party_skill=party_param["character_skilldata"],
+                        party_faceimg= "img/characters/"+party_param["character_img_id"]+"/"+party_param["character_img_id"]+"0101.png";
+
+                    $("#face_img_member_"+i).attr("src",party_faceimg);
+                    $('#party_name_'+i).html(party_param["character_name"]);
+                    $('#party_job_'+i).html("ジョブ:"+party_param["character_job"]);
+                    $('#party_type_'+i).html("タイプ:"+party_param["character_battleType"]);
+                    $('#party_race_'+i).html("種族:"+party_param["character_race"]);
+
+                    $('#party_hp_'+i).html("HP:"+party_stetas["hp"]);
+                    $('#party_pow_'+i).html("攻撃力:"+party_stetas["pow"]);
+                    $('#party_def_'+i).html("防御力:"+party_stetas["def"]);
+                    $('#party_magic_'+i).html("魔力:"+party_stetas["magic"]);
+                    $('#party_mental_'+i).html("精神力:"+party_stetas["mental"]);
+
+                    $('#party_skill_name_'+i).html(party_skill["skill_name"]);
+                    $('#party_skill_dic_'+i).html(party_skill["skill_discription"]);
+                }else{
+                    $("#face_img_member_"+i).attr("src","");
+                    $('#party_name_'+i).html("");
+                    $('#party_job_'+i).html("");
+                    $('#party_type_'+i).html("");
+                    $('#party_race_'+i).html("");
+
+                    $('#party_hp_'+i).html("");
+                    $('#party_pow_'+i).html("");
+                    $('#party_def_'+i).html("");
+                    $('#party_magic_'+i).html("");
+                    $('#party_mental_'+i).html("");
+
+                    $('#party_skill_name_'+i).html("");
+                    $('#party_skill_dic_'+i).html("");
+                }
+            }
+        }
+   
+        function selectCharacterpanel(){
+            const selecter = document.getElementById("select_characters_dropdown"),
+                panelId = selecter.value;
+
+            $.ajax({
+               url:"./php/PartyMemberChange.php",
+               type:"post",
+               data:{
+                select_cId:panelId
+               },
+                success:function(data){
+                    const　select_cdata = data["selectharacter"];
+                    
+                   setStetasPanel(data);
+                   setSelectCharacter(select_cdata);
+                 },
+                error:(function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("a!!");
+              　　console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+              　　console.log("textStatus     : " + textStatus);
+              　　console.log("errorThrown    : " + errorThrown.message);                                  
+                })
+            });
+        }
+  
+        function setPartyNewData(partyId_){
+            $.ajax({
+               url:"./php/PartyMemberChange.php",
+               type:"post",
+               data:{
+                select_partyId:partyId_
+               },
+                success:function(data){
+                    const 
+                        new_party_data=data["partystetas"];
+                        select_cdata = data["selectharacter"];
+                    
+                   setStetasPanel(data);
+                   setSelectCharacter(select_cdata);
+                   setPartyStetas(new_party_data);
+                   alert(data["message"]);
+                 },
+                error:(function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("a!!");
+              　　console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+              　　console.log("textStatus     : " + textStatus);
+              　　console.log("errorThrown    : " + errorThrown.message);                                  
+                })
+            });
+        }
+   </script>
+</body>
+</html>

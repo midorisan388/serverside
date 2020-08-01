@@ -1,0 +1,22 @@
+[
+    { "lernID":0,"timing":6,"type":"ATK"},
+    { "lernID":0,"timing":6.8,"type":"ATK"},
+    { "lernID":1,"timing":7.3,"type":"DEF"},
+    { "lernID":1,"timing":15,"type":"ENH"},
+    { "lernID":0,"timing":16.7,"type":"TEC"},
+    { "lernID":0,"timing":17.1,"type":"ATK"},
+    { "lernID":1,"timing":19,"type":"ATK"},
+    { "lernID":0,"timing":26,"type":"ATK"},
+    { "lernID":0,"timing":28,"type":"ATK"},
+    { "lernID":0,"timing":30.2,"type":"ATK"},
+    { "lernID":1,"timing":36.6,"type":"ENH"},
+    { "lernID":0,"timing":37.2,"type":"DEF"},
+    { "lernID":0,"timing":38.5,"type":"ATK"},
+    { "lernID":0,"timing":49.5,"type":"ATK"},
+    { "lernID":1,"timing":50.2,"type":"ATK"},
+    { "lernID":0,"timing":51.3,"type":"ATK"},
+    { "lernID":1,"timing":52.23,"type":"ATK"},
+    { "lernID":1,"timing":52.45,"type":"ATK"},
+    { "lernID":0,"timing":55.83,"type":"ATK"},
+    { "lernID":0,"timing":60.60,"type":"ATK"}
+]

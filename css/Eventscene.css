@@ -1,0 +1,109 @@
+body{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 100%;height: 100vh;
+    position:absolute;
+    top:0;left: 0;
+}
+.touchscreen{
+    position: absolute;
+    top: 0;left: 0;
+    width: 100%;
+    height: 100vh;
+}
+.controlpanel{
+    position: absolute;
+    top: 0;left: 0;
+    width: 100px;
+    height: 100vh;
+}
+#leftctrl{
+    position: absolute;
+    top: 0;left: 0;
+    width: 0;height: 100vh;
+    overflow: hidden;
+    background-color: aquamarine;
+}
+#closemenu{
+    top: 0;left: 0;
+    background-color: coral;
+}
+#home{
+    position: relative;
+    top: 0;left: 0;
+    width: 100%;
+    height: 100vh;
+    
+}
+#openmenu{
+    position: absolute;
+    top: 0;left: 0;
+    width: 50px;height: 50px;
+    background-color: khaki;
+}
+
+#maincanvas{
+    position: absolute;
+    width: 100%;height: 100vh;
+    margin:0;padding:0;
+    background-color: azure;
+}
+
+#selifcanvas{
+    top:100px;
+    left:10px; 
+    position: absolute;
+    border: 1px dotted blueviolet;
+}
+#selifplate{
+    display:flex;
+    position: relative;
+    background-color: antiquewhite;
+    background-size: cover;
+
+}
+#selif{
+    margin: 20px;
+    text-align: left;
+}
+.faceglaph{
+    text-align: center;
+    width: 100px;height: 100px;
+    top:10px;left: 20px;
+}
+
+#selifowner{
+    position: absolute;
+    width: auto;
+    top:0;left: 100px;
+    background-image: url("../img/menu/selifframe.jpg");
+    background-size: 100% 100%;
+}
+#remake{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    top:0;left: 0;
+
+}
+
+#selects{
+    position: relative;
+}
+.selectlis{
+    position: relative;
+    margin:0px;padding:0px;border: 10px;
+    background-color: chartreuse;
+    text-align: center;
+}
+
+#select-0{
+    top:40%;
+}
+#select-1{
+    top:50%;
+}
+.selecter{
+    background-color: aqua;
+}

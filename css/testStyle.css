@@ -1,0 +1,230 @@
+body{
+    margin: 0;
+}
+
+.back-img{
+    position: absolute;
+    background: url("../img/battlescene/mapimgtest.jpg");
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.party-face-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.face-img{
+    position: absolute;
+    width: 15%;
+    height: 100%;
+}
+
+#face-img1{
+    left: 5%;
+    background-color: chocolate;
+}
+
+#face-img2{
+    left: 30%;
+    background-color: aqua;
+}
+
+#face-img3{
+    left: 55%;
+    background-color: hotpink;
+}
+
+#face-img4{
+    left: 80%;
+    background-color: black;
+}
+
+.game-play-view{
+    z-index: 100;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.lern-group{
+    position: absolute;
+
+    top: 32%;
+    width: 100%;
+    height: 80%;
+}
+
+.play-lern{
+    position: absolute;
+   
+    width: 5%;
+    top: 0;
+    display: block;
+    left: 48%;
+
+    animation-name: openlern;
+    animation-duration: 2s;
+
+    background: url("../img/battlescene/lern.jpg");
+}
+
+#lern1{
+    /*left: 10%;*/
+    transform-origin: top left;
+    animation-name: rotate-lern1;
+    animation-duration: 2s;
+
+    height: 137%;
+    transform:rotate(50deg);
+}
+
+#lern2{
+    transform-origin: top left;
+    animation-name: rotate-lern2;
+    animation-duration: 2s;
+   /*left: 35%;*/
+   height: 110%;
+   transform:rotate(25deg);
+}
+
+#lern3{
+    transform-origin: top right;
+    animation-name: rotate-lern3;
+    animation-duration: 2s;
+    /*left: 60%;*/
+    height: 110%;
+    transform:rotate(-25deg);
+}
+
+#lern4{
+    transform-origin: top right;
+    animation-name: rotate-lern4;
+    animation-duration: 2s;
+    /*left: 85%;*/
+    height: 137%;
+    transform:rotate(-50deg);
+}
+
+.center-lern{
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    left: 50%;
+    background-color: chartreuse;
+}
+
+.party-icon{
+    z-index: 110;
+    position: absolute;
+    background-color: crimson;
+    width: 100%;
+    height: 20%;
+    bottom: 0;
+}
+
+#lern1 .touch-point{
+    position: relative;
+    width: 100%;
+    height: 10%;
+
+    animation-name: movetouchpoint1;
+    animation-duration: 2s;
+
+    background-color: antiquewhite;
+    top:40%;
+}
+
+.notes-start-point{
+    z-index: 110;
+    position: absolute;
+    left: 38%;
+    width: 25%;
+    height: 25%;
+}
+
+.notes-start-point img{
+    width: 100%;
+    height: 100%;
+}
+
+.enemy-view{
+    z-index: 110;
+    position: absolute;
+    top: 0;
+    height: 15%;
+
+    animation: openenemyview 2s;
+    width: 100%;
+}
+
+.enemy-status{
+    grid-column-start: 1;
+    padding: 5px;
+    width: 90%;
+    height: 90%;
+}
+.enemy-face{
+    position: absolute;
+    grid-column: 1;
+    width: 10%;
+    height: 100%;
+    background: url("../img/characters/103501/1035010101.png");
+}
+.enemy-health{
+    position: absolute;
+    grid-column: 2;
+    left: 11%;
+    width: 89%;
+    height: 100%;
+    background-color: greenyellow;
+}
+
+.game-score-view{
+    z-index: 110;
+    position: absolute;
+    right: 2%;
+    top: 22%;
+    width: 10%;
+    height: 25%;
+    background-color: crimson;
+}
+
+@keyframes openenemyview{
+    0% { width: 0%; left: 50%;}
+    100% {width: 100%;left: 0%;}
+}
+
+@keyframes openlern{
+    0% {background-color: black; width: 0; height: 10%;}
+    50% {background-color: black; }
+    75% {background-color: white; height: 80%;}
+    100% {background-color: brown; width: 5%;}
+}
+
+@keyframes movetouchpoint1{
+    0% {top: 0%;}
+    100% {top: 40%;}
+}
+
+@keyframes rotate-lern1{
+    0% {transform:rotate(0deg);}
+    100% {transform:rotate(50deg); height: 137%;}
+}
+
+@keyframes rotate-lern2{
+    0% {transform:rotate(0deg);}
+    100% {transform:rotate(25deg); height: 110%;}
+}
+
+@keyframes rotate-lern3{
+    0% {transform:rotate(0deg);}
+    100% {transform:rotate(-25deg); height: 110%;}
+}
+
+@keyframes rotate-lern4{
+    0% {transform:rotate(0deg);}
+    100% {transform:rotate(-50deg); height: 137%;}
+}

@@ -1,0 +1,27 @@
+{
+    "0":{
+        "ID":0,
+        "musicID":0,
+        "itemGachaID":[1,2,3]
+    },
+    "1":{
+        "ID":1,
+        "musicID":1,
+        "itemGachaID":[4,5,6]
+    },
+    "2":{
+        "ID":2,
+        "musicID":2,
+        "itemGachaID":[2,4,6]
+    },
+    "3":{
+        "ID":3,
+        "musicID":3,
+        "itemGachaID":[4,1,2]
+    },
+    "4":{
+        "ID":4,
+        "musicID":4,
+        "itemGachaID":[0,1,2]
+    }
+}

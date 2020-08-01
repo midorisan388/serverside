@@ -1,0 +1,123 @@
+ <!--設定メニュー-->   
+ <header>
+     <div class="option-menu-content">
+         <div id=option-menu-btn onclick="Optionmenu()">
+            <dix id="option-img">
+                <div id="optionLink">
+                    <span>音量</span>
+                </div>
+            </div>
+         </div>
+     </div>
+ </header>
+
+    <div class="Menu-option-content closeoption">
+            <div class="option_content_frame">
+               <div id="option_content_body">
+                <div class="audio_ctl">
+                    <div class="bgm">
+                        <h3>BGM</h3>
+                        <input id="audio_slider" type="range" min="0" max="10" step="1">
+                    </div>
+                    <div class="se">
+                    <h3>SE</h3>
+                        <input id="se_slider" type="range" min="0" max="10" step="1">
+                    </div>
+                </div>
+              </div>
+             </div>
+        </div>
+    <div class="MenuVar-content" id="footer">
+        <div class="openmenu" id="Menu-links-content" >
+           <form id="menu_contents" action="/game/page" method="GET">
+                <div class="MenuLinkBtn" id="Mypage" value="Mypage">
+                    <div class="Menulink" id="mypageLink">
+                        <span class="MenuLinkSpan"> <input type="submit" name="page-link" value="my">
+                        </span>
+                    </div>
+                </div>
+                <div class="MenuLinkBtn" id="Party" value="Party">
+                    <div class="Menulink" id="partyLink">
+                        <span class="MenuLinkSpan">
+                            <input type="submit" name="page-link" value="party">
+                        </span>
+                    </div>
+                </div>
+                <div class="MenuLinkBtn" id="Gradeup" value="Gradeup">
+                    <div class="Menulink"　id="greadupLink">
+                        <span class="MenuLinkSpan"> 
+                         <input type="submit" name="page-link" value="upgrade">
+                        </span>
+                    </div>
+                </div>
+                <div class="MenuLinkBtn" id="Quest" value="Quest">
+                    <div class="Menulink" id="questLink">
+                       <span class="MenuLinkSpan">
+                           <input type="submit" name="page-link" value="quest">
+                        </span>
+                  </div>
+               </div>
+                <div class="MenuLinkBtn" id="Userdata" value="UserData">
+                    <div class="Menulink" id="userdataLink">
+                        <span class="MenuLinkSpan">
+                            <input type="submit" name="page-link" value="user">
+                        </span>
+                    </div>
+                </div>
+                <div class="MenuLinkBtn" id="Logout" value="Logout">
+                    <div class="Menulink" id="logoutLink">
+                        <span class="MenuLinkSpan">
+                            <input type="submit" name="page-link" value="out">
+                        </span>
+                    </div>
+              </div>
+            </form>
+        </div>
+        <div class="menu-controller-area"></div>
+
+        
+       <script type="text/javascript">
+       const media = document.getElementById("homebgm");
+        $(window).on('load',()=>{
+
+           document.getElementById('audio_slider').value=0.5;
+           // $('#se_slider').value=se_vol;
+        });
+        
+         function MenuOpen(){
+             if($("#Menu-links-content").hasClass("openmenu")){
+              $("#Menu-links-content").addClass("closemenu");
+              $("#Menu-links-content").removeClass("openmenu");
+             }else if( $("#Menu-links-content").hasClass("closemenu")){
+              $("#Menu-links-content").addClass("openmenu");
+              $("#Menu-links-content").removeClass("closemenu");
+             }
+         }
+
+         function Optionmenu(){
+            if($(".Menu-option-content").hasClass("openoption")){
+              $(".Menu-option-content").addClass("closeoption");
+              $(".option_content_frame").css("width", "0%");
+              $(".Menu-option-content").removeClass("openoption");
+            }else if($(".Menu-option-content").hasClass("closeoption")){
+              $(".Menu-option-content").addClass("openoption");
+              $(".option_content_frame").css("width", "300px");
+              $(".Menu-option-content").removeClass("closeoption");
+            }
+         }
+        
+         $(function(){
+            $(".menu-controller-area").on(EVENTNAME_TOUCHSTART,function(){
+               MenuOpen();
+            });
+            $("#audio_slider").on('change',function(){
+                let audio_vol = document.getElementById('audio_slider').value;
+                media.value = Math.ceil((audio_vol+0.1)*10)/10;
+                console.log(media.value);
+            });
+            $("#se_slider").on('change',function(){
+                $('#se_slider').value=$('#se_slider').value*0.1;
+            });
+         });
+       </script>
+    </div>

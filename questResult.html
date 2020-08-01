@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script type="text/javascript" src="js/prag/jquery-3.3.1.js"></script>
+    <title>Game-Result</title>
+</head>
+<body>
+    <div class="main">
+        <div class="back-img">
+            <div class="party-img">
+                <div class="party-memer-img" id="character-1"></div>
+                <div class="party-memer-img" id="character-2"></div>
+                <div class="party-leader-img" id="character-leader"></div>
+                <div class="party-memer-img" id="character-3"></div>
+                <div class="party-memer-img" id="character-4"></div>
+            </div>    
+        </div>
+        <div class="result-title">リザルト</div>
+        <div class="quest-info">
+            <div class="quest-title"><p id="quest-title-data">クエスト名</p></div><div class="quest-level-title"><p>【難易度】</p></div>
+            <div class="quest-music-title"><p id="music-title-data">楽曲名</p></div>
+            <div class="quest-border-score">目標スコア:<div class="quest-border-score-data">1300000</div></div> 
+            <div class="quest-enemy-detroy">敵殲滅率:<strong class="quest-enemy-detroy" id="enemy-destroy-data">90</strong>%</div><div class="bonus-score"><p id="bonus-score-data">+3000</p></div>
+        </div>
+        <div class="score-view">
+            <div class="point-view">
+                <div class="point-row" id="perf-point"><p class="point-row-title">PERFECT:</p><strong class="point-row-data" id="point-perf-date">21</strong></div>
+                <div class="point-row" id="great-point"><p class="point-row-title">GREAT:</p><strong class="point-row-data" id="point-great-date">3</strong></div>
+                <div class="point-row" id="good-point"><p class="point-row-title">GOOD:</p><strong class="point-row-data" id="point-good-date">2</strong></div>
+                <div class="point-row" id="bad-point"><p class="point-row-title">BAD:</p><strong class="point-row-data" id="point-bad-date">0</strong></div>
+                <div class="point-row" id="miss-point"><p class="point-row-title">MISS:</p><strong class="point-row-data" id="point-miss-date">1</strong></div>
+            </div>
+            <div class="score-result-view">
+                <div class="battle-score"><div class="score-row-data" id="score-battle-title">今回のSCORE:<strong class="score-row-data" id="core-battle-data">2859666</strong><div class="score-row-data" id="score-bonus-data">(3000)</div></div></div>
+                <div class="best-score"><p class="score-row-data">最高SCORE:</p><strong class="score-row-data" id="score-best-date">3614478</strong><div class="score-row-data" id="score-bestbonus-data">(3000)</div></div>
+            </div>
+            <div class="comb-result-view">
+                <div class="battle-comb"><p class="cmb-row-data">今回の最高コンボ:</p><p class="cmb-row-data" id="cmb-battle-data">568</p></div>
+                <div class="best-comb"><p class="cmb-row-data">最高記録:</p><p class="cmb-row-data" id="cmb-max-data">1000</p></div>
+            </div>
+        </div>
+
+        <div class="return-page-btn"><a href="/game/page?page-link=quest" class="return-page-input">クエストページに戻る</a></div>
+    </div>
+
+    <script type="text/javascript">
+
+    function Init(){
+        $.ajax({
+            url:"php/BattleResult.php",
+            type:"post",
+            success:function(data){
+                console.log(data);
+                UpdateQuestData(data);
+                UpdateScoreDate(data);
+            },
+            error:(function(XMLHttpRequest, textStatus, errorThrown) {
+            　　console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+            　　console.log("textStatus     : " + textStatus);
+            　　console.log("errorThrown    : " + errorThrown.message);              
+                })
+            });
+    }
+
+    function UpdateQuestData(data){
+        $("#enemy-destroy-data").html(data["enemyDestroy"]);
+        $("#bonus-score-data").html("+"+data["BonusData"][1]);
+        $("#quest-title-data").html(data["questData"][0]);
+        $("#music-title-data").html(data["questData"][1]);
+    }
+
+    function UpdateScoreDate(data){
+        //スコア
+        $("#core-battle-data").html(data["ScoreData"][1]+data["BonusData"][1]);
+        $("#score-best-date").html(data["ScoreData"][0]+data["BonusData"][0]);
+        $("#score-bonus-data").html("("+data["BonusData"][1]+")");
+        $("#score-bestbonus-data").html("("+data["BonusData"][0]+")");
+        //コンボ
+        $("#cmb-battle-data").html(data["Combo"][1]);
+        $("#cmb-max-data").html(data["Combo"][0]);
+        //判定表
+        $("#point-perf-date").html(data["pointCntData"]["Perf"]+"("+ColPointDifference(data["pointCntData"]["Perf"],data["pointCntMaxData"]["Perf"])+")");
+        $("#point-great-date").html(data["pointCntData"]["Great"]+"("+ColPointDifference(data["pointCntData"]["Great"],data["pointCntMaxData"]["Great"])+")");
+        $("#point-good-date").html(data["pointCntData"]["Good"]+"("+ColPointDifference(data["pointCntData"]["Good"],data["pointCntMaxData"]["Good"])+")");
+        $("#point-bad-date").html(data["pointCntData"]["Bad"]+"("+ColPointDifference(data["pointCntData"]["Bad"],data["pointCntMaxData"]["Bad"])+")");
+        $("#point-miss-date").html(data["pointCntData"]["Miss"]+"("+ColPointDifference(data["pointCntData"]["Miss"],data["pointCntMaxData"]["Miss"])+")");
+    }
+
+    function ColPointDifference(b,a){
+        return b-a;
+    }
+
+    window.onload=Init;
+    </script>
+</body>
+</html>
