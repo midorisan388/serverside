@@ -1,0 +1,52 @@
+
+    <div class="main">
+        <div class="back-img">
+            <div class="before-img"><img class="before-img-back" src="img/characters/face1.jpg"></div>
+            <div class="after-img"><img  class="after-img-back" src="img/characters/face1.jpg"></div>
+        </div>
+        <div class="magazine-view">
+            <div id="magazine">
+                <div class=quest-info-title>Story</div>
+                <div class=quest-info-null></div>
+            </div>
+        </div>
+        <div class="quest-ui">
+            <div class="quest-start-btn">
+                <div class="quest-start-img"><a href="/game/battle" onclick="LocateBattleScene()">クエスト開始</a></div>
+            </div>
+            <div class="party-btn">
+                <div class="party-btn-img">
+                    <form id="party_btn"  action="/game/page" method="GET">
+                        <input type="submit" name="page-link" value="party">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wapper">
+        
+        <div class="page-anounce-view">
+            <div class="page-anounce-point">
+
+            </div>
+        </div>
+        <div class="st0">
+            <!--<div class="chapter-text"></div>-->
+            <div class="page-point"></div>
+        </div>
+        <div class="prev-btn">前のページへ</div>
+        <div class="next-btn">次のページへ</div>
+        <div class="chapter-list-view">
+            <ul>
+            </ul>
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+    fetch('js/prag/turn.js').then(r=>{return r.text()}).then(t=>{
+        eval(t);
+    }); 
+</script>
+
+<script type="text/javascript" src="js/storyMenu.js"></script>
