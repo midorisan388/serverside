@@ -6,7 +6,7 @@
   
   try{
     //ST初期格納
-    $modelST = {
+    $modelST = array(
         'name' => "",
         'imgurl'=>"",
         'skillname'=>"",
@@ -16,7 +16,7 @@
         'power'=>0,
         'deff'=>0,
         'hp'=>0
-    };
+    );
 
     $memberSt=[];
     $enemySt=[];

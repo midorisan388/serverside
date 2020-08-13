@@ -43,7 +43,7 @@ class SetStetasEnemy extends SkillBase{
             //付与確率判定
             if($actionSt["mental"] * 0.3 >= random_int(0, 1000)){
                 $targetSt[$eId] = $responsdata["updateSt"];
-                $actionMes .=　$targetSt[$eId]->characterName."に{$responsdata['Stname']}を付与<br>";
+                $actionMes .= $targetSt[$eId]->characterName."に".$responsdata['Stname']."を付与<br>";
             }
         }
         return [$actionplayer, $targetSt,$actionMes ]; 
