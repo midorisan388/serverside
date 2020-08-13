@@ -142,7 +142,6 @@ class RedisBattleManager{
             $audiotext = [$musicSt["audioFilePath"],$musicSt["musictitle"]];//audioファイルのパスと曲名
             $titletext= $questSt["title"];//クエスト名
             
-            try{
                 if(file_exists($notesUrl)){
                     //ノーツデータリストの生成
                     $notesjson = file_get_contents($notesUrl);
@@ -153,9 +152,7 @@ class RedisBattleManager{
             
                     $this->redis->set("illegalNotesIds",json_encode($illegalNotesIds));
                 }
-            }catch(IOException e){
-              $notesjson="ファイルがありません";
-            }
+            
         }
     }
 
